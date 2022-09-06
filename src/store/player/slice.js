@@ -4,11 +4,11 @@ const initialState = {
   allTeamPlayers: null,
 };
 
-export const teamPlayerSlice = createSlice({
+export const playerSlice = createSlice({
   name: "teamPlayer",
   initialState,
   reducers: {},
 });
 
-export const {} = teamPlayerSlice.actions;
-export default teamPlayerSlice.reducer;
+export const {} = playerSlice.actions;
+export default playerSlice.reducer;
