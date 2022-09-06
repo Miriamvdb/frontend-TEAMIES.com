@@ -12,3 +12,9 @@ export const Text = styled.p`
   font-size: 0.9rem;
   color: #00bfff;
 `;
+
+export const TextXs = styled.p`
+  text-align: left;
+  font-size: 0.7rem;
+  color: #00bfff;
+`;

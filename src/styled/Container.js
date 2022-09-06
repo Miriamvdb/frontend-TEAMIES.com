@@ -14,7 +14,7 @@ export const MainContainer = styled.div`
 
 export const SubContainer = styled.div`
   border-radius: 25px;
-  padding: 1.5rem 3rem;
+  padding: 1rem 3rem;
   color: "#00bfff";
   background-image: linear-gradient(
     170deg,

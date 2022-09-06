@@ -20,7 +20,7 @@ export const AllEvents = () => {
       <div
         style={{
           overflow: "scroll",
-          height: "10rem",
+          height: "13rem",
         }}
       >
         {allEvents ? (

@@ -11,7 +11,7 @@ export const PlayerCard = ({
     <div
       style={{
         width: "175px",
-        borderTop: "1px solid #00bfff",
+        borderTop: "1px solid #59d6ff",
         padding: "0.5rem 0rem",
       }}
     >

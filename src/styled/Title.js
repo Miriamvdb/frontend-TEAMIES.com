@@ -11,5 +11,5 @@ export const Title = styled.h2`
   text-align: left;
   font-size: 1.5rem;
   color: #00bfff;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
 `;

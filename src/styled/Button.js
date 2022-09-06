@@ -13,3 +13,49 @@ export const ButtonForm = styled.button`
     border: 2px solid #59d6ff;
   }
 `;
+
+export const LogoutButton = styled.button`
+  margin-right: 8.5rem;
+  cursor: pointer;
+  background: none;
+  color: #00bfff;
+  border: none;
+  transition: all 0.2s ease-in;
+  font-size: 0.9rem;
+
+  &:hover {
+    color: #59d6ff;
+  }
+`;
+
+export const PartiButtonPr = styled.button`
+  background-image: linear-gradient(165deg, #00bfff, #5fffbc);
+  margin: 1.25rem 1.25rem 0 0;
+  color: white;
+  width: 6rem;
+  height: 2rem;
+  font-size: 0.6rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+`;
+
+export const PartiButtonAb = styled.button`
+  background-image: linear-gradient(165deg, #ff6347, rgb(255, 213, 0));
+  margin: 1.25rem 1.25rem 0 0;
+  color: white;
+  width: 6rem;
+  height: 2rem;
+  font-size: 0.6rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+`;

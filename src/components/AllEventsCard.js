@@ -13,8 +13,8 @@ export const AllEventsCard = ({
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        borderTop: "1px solid #00bfff",
-        padding: "0 0 0.75rem 0",
+        borderTop: "1px solid #59d6ff",
+        padding: "0 0 0.25rem 0",
       }}
     >
       <div>
