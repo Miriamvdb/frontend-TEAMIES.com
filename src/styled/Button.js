@@ -1,15 +1,15 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-export const Button = styled.button`
-  background: ${props => props.primary ? "#B22727" : "white"};
-  color: ${props => props.primary ? "white" : "#B22727"};
-  font-size: 1em;
+export const ButtonForm = styled.button`
+  background: ${(props) => (props.primary ? "#00bfff" : "white")};
+  color: ${(props) => (props.primary ? "white" : "#00bfff")};
+  font-size: 1rem;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid #B22727;
+  border: 2px solid #00bfff;
   border-radius: 3px;
-  
-  &:hover{
-    border: 2px solid #1E3163
+
+  &:hover {
+    border: 2px solid #59d6ff;
   }
 `;

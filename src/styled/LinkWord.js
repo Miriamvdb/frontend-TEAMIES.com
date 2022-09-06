@@ -1,4 +1,4 @@
 export const LinkWord = {
   textDecoration: "none",
-  color: "#B22727"
-}
+  color: "#00bfff",
+};
