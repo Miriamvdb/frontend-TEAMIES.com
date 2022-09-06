@@ -10,7 +10,7 @@ export const eventSlice = createSlice({
   reducers: {
     // F2: Get all events with category
     setAllEvents: (state, action) => {
-      console.log("From setAllEvents reducer!", action);
+      state.allEvents = action.payload;
     },
   },
 });

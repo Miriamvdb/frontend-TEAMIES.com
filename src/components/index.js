@@ -5,3 +5,4 @@ export * from "./Team";
 export * from "./AllEvents";
 export * from "./MySchedule";
 export * from "./PlayerCard";
+export * from "./AllEventsCard";
