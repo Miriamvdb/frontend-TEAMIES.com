@@ -1,14 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  allTeamPlayers: null,
+  allPlayers: null,
 };
 
 export const playerSlice = createSlice({
-  name: "teamPlayer",
+  name: "player",
   initialState,
-  reducers: {},
+  reducers: {
+    // F1: Get all players of the team
+    setAllPlayers: (state, action) => {
+      console.log("From the setAllPlayers reducer!", action);
+      state.allPlayers = action.payload;
+    },
+  },
 });
 
-export const {} = playerSlice.actions;
+export const { setAllPlayers } = playerSlice.actions;
 export default playerSlice.reducer;
