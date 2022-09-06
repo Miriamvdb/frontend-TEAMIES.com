@@ -8,7 +8,7 @@ export const fetchAllPlayers = () => async (dispatch, getState) => {
   try {
     dispatch(appLoading());
     const response = await axios.get(`${apiUrl}/players`);
-    console.log("Response fetchAllPlayers", response.data);
+    // console.log("Response fetchAllPlayers", response.data);
     dispatch(setAllPlayers(response.data));
     dispatch(appDoneLoading());
   } catch (e) {

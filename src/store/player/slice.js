@@ -10,7 +10,6 @@ export const playerSlice = createSlice({
   reducers: {
     // F1: Get all players of the team
     setAllPlayers: (state, action) => {
-      console.log("From the setAllPlayers reducer!", action);
       state.allPlayers = action.payload;
     },
   },
