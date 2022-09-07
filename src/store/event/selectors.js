@@ -1,7 +1,7 @@
-export const selectAllEvents = (reduxState) => reduxState.event.allEvents;
-
-// Select all events - sorted by date // fix in backend yet..
-// export const selectAllEvents = (reduxState) => {
-//   const eventSortByDate = [...reduxState.event.allEvents];
-//   return eventSortByDate.sort((eventA, eventB) => eventB.date - eventA.date);
-// };
+// Select all events - sorted by date
+export const selectAllEvents = (reduxState) => {
+  const allEventsByDate = [...reduxState.event.allEvents];
+  return allEventsByDate.sort(
+    (eventA, eventB) => new Date(eventA.date) - new Date(eventB.date)
+  );
+};

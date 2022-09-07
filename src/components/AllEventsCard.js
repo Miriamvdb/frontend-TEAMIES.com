@@ -1,4 +1,5 @@
 import { PartiButtonPr, PartiButtonAb, Text, TextXs } from "../styled";
+import moment from "moment";
 
 export const AllEventsCard = ({
   title,
@@ -18,7 +19,7 @@ export const AllEventsCard = ({
       }}
     >
       <div>
-        <Text>{date}</Text>
+        <Text>{moment(date).format("ddd, MMM Do YYYY")}</Text>
         <Text>
           <b>{title === "Match" ? opponent : title}</b>
         </Text>
