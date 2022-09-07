@@ -60,6 +60,7 @@ export const signUp = (
   };
 };
 
+//F4: User can login and see the dashboard
 export const login = (email, password) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());

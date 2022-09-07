@@ -1,21 +1,27 @@
-import styled from "styled-components"
-import { Button, Input, Title, LinkWord } from "../styled"
-import { Link } from "react-router-dom"
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
-import { login } from "../store/user/thunks"
-import { selectToken } from "../store/user/selectors"
+import {
+  ButtonForm,
+  Input,
+  TitleCenter,
+  LinkWord,
+  MainContainer,
+  Form,
+  TextCenter,
+} from "../styled";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { login } from "../store/user/thunks";
+import { selectToken } from "../store/user/selectors";
 
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  const token = useSelector(selectToken)
+  const token = useSelector(selectToken);
 
   useEffect(() => {
     if (token !== null) {
@@ -24,46 +30,37 @@ export const Login = () => {
   }, [token, navigate]);
 
   const submitForm = (e) => {
-    e.preventDefault()
-    dispatch(login(email, password))
-  }
+    e.preventDefault();
+    dispatch(login(email, password));
+  };
 
   return (
-    <div style={{textAlign: "center"}}>
-      <Container>
-        <Title>Login</Title>
-        <form onSubmit={submitForm}>
-          <Input 
-            placeholder="email"
+    <div style={{ textAlign: "center" }}>
+      <MainContainer>
+        <TitleCenter>Login</TitleCenter>
+        <Form onSubmit={submitForm}>
+          <Input
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Input 
-            type="password" 
-            placeholder="password"
+          <Input
+            type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <br/>
-          <Button type="submit">Login</Button>
-        </form>
-        <SubText>
-          Don't have an account yet? Click <Link to="/signup" style={LinkWord}>here</Link> to sign up
-        </SubText>
-      </Container>
+          <br />
+          <ButtonForm type="submit">Login</ButtonForm>
+        </Form>
+        <TextCenter>
+          Don't have an account yet? Click{" "}
+          <Link to="/signup" style={LinkWord}>
+            <b>here</b>
+          </Link>{" "}
+          to sign up
+        </TextCenter>
+      </MainContainer>
     </div>
-  )
-}
-
-const Container = styled.div`
-  display: 'flex';
-  flex-direction: 'column';
-  margin: 15%;
-`
-
-const SubText = styled.p`
-  text-align: center;
-  color: #1E3163;
-  padding: 20px 0px 5px 0px;
-`;
-
+  );
+};

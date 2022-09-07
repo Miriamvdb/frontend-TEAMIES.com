@@ -1,17 +1,24 @@
 import "./App.css";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/thunks";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { Navbar, MessageBox } from "./components";
 import { Dashboard, Login, SignUp } from "./pages";
+import { selectToken } from "./store/user/selectors";
 
 export const App = () => {
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+  const token = useSelector(selectToken);
+
   useEffect(() => {
     dispatch(getUserWithStoredToken());
-  }, [dispatch]);
+    if (token === null) {
+      navigate("/login");
+    }
+  }, [dispatch, token, navigate]);
 
   return (
     <div>
