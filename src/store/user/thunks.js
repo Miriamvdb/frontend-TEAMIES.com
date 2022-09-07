@@ -5,14 +5,29 @@ import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/thunks";
 import { loginSuccess, logOut, tokenStillValid } from "./slice";
 
-export const signUp = (name, email, password) => {
+// F3: User signup incl. creating all the profile information
+export const signUp = (
+  firstName,
+  lastName,
+  email,
+  password,
+  line,
+  position,
+  backNumber,
+  image
+) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
       const response = await axios.post(`${apiUrl}/auth/signup`, {
-        name,
+        firstName,
+        lastName,
         email,
         password,
+        line,
+        position,
+        backNumber,
+        image,
       });
 
       dispatch(
@@ -57,7 +72,7 @@ export const login = (email, password) => {
       dispatch(
         loginSuccess({ token: response.data.token, user: response.data.user })
       );
-      dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
+      // dispatch(showMessageWithTimeout("success", false, "Welcome back!", 1500));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
