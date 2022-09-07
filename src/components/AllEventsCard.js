@@ -4,6 +4,7 @@ import moment from "moment";
 export const AllEventsCard = ({
   title,
   opponent,
+  home,
   date,
   startTime,
   endTime,
@@ -21,7 +22,13 @@ export const AllEventsCard = ({
       <div>
         <Text>{moment(date).format("ddd, MMM Do YYYY")}</Text>
         <Text>
-          <b>{title === "Match" ? opponent : title}</b>
+          <b>
+            {title === "Match"
+              ? home
+                ? `EDO VR1 - ${opponent}`
+                : `${opponent} - EDO VR1`
+              : title}
+          </b>
         </Text>
         <TextXs>
           {startTime.slice(0, 5)} - {endTime.slice(0, 5)}

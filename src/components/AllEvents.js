@@ -30,6 +30,7 @@ export const AllEvents = () => {
                 <AllEventsCard
                   title={event.title}
                   opponent={event.opponent}
+                  home={event.home}
                   date={event.date}
                   startTime={event.startTime}
                   endTime={event.endTime}
