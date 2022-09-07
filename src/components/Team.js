@@ -34,12 +34,12 @@ export const Team = () => {
               <div key={index}>
                 <PlayerCard
                   id={player.id}
+                  image={player.image}
                   firstName={player.firstName}
                   lastName={player.lastName}
                   line={player.line}
                   position={player.position}
                   backNumber={player.backNumber}
-                  image={player.image}
                 />
               </div>
             );

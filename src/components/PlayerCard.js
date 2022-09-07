@@ -1,6 +1,7 @@
-import { Text } from "../styled";
+import { ImgXs, Text } from "../styled";
 
 export const PlayerCard = ({
+  image,
   firstName,
   lastName,
   line,
@@ -10,17 +11,16 @@ export const PlayerCard = ({
   return (
     <div
       style={{
-        width: "175px",
-        borderTop: "1px solid #59d6ff",
-        padding: "0.5rem 0rem",
+        width: "170px",
       }}
     >
+      <ImgXs src={image} alt="" />
       <Text>
         <b>
           {firstName} {lastName}
         </b>
       </Text>
-      <Text>#{backNumber}</Text>
+      <Text>{backNumber === null ? "" : `#${backNumber}`}</Text>
       <Text>{line}</Text>
       <Text>{position}</Text>
     </div>
