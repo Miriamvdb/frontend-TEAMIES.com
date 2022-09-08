@@ -25,7 +25,7 @@ export const Team = () => {
           justifyContent: "center",
           gap: "2.5rem",
           overflow: "scroll",
-          height: "10rem",
+          height: "13rem",
         }}
       >
         {allPlayers ? (

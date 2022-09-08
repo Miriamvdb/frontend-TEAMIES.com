@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const ButtonForm = styled.button`
   background: ${(props) => (props.primary ? "#00bfff" : "white")};
   color: ${(props) => (props.primary ? "white" : "#00bfff")};
-  font-size: 1rem;
+  font-size: 0.9rem;
+  height: 2rem;
   margin: 1em;
   padding: 0.25em 1em;
   border: 2px solid #00bfff;
-  border-radius: 3px;
+  border-radius: 25px;
 
   &:hover {
     border: 2px solid #59d6ff;
@@ -34,9 +35,9 @@ export const PartiButtonPr = styled.button`
   color: white;
   width: 6rem;
   height: 2rem;
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  border: none;
+  border: 2px solid white;
   border-radius: 25px;
 
   &:hover {
@@ -46,13 +47,14 @@ export const PartiButtonPr = styled.button`
 
 export const PartiButtonAb = styled.button`
   background-image: linear-gradient(165deg, #ff6347, rgb(255, 213, 0));
+  ${"" /* background: none; // Look for when the button is not clicked yet */}
   margin: 1.25rem 1.25rem 0 0;
   color: white;
   width: 6rem;
   height: 2rem;
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  border: none;
+  border: 2px solid white;
   border-radius: 25px;
 
   &:hover {

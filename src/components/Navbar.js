@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { selectToken } from "../store/user/selectors";
+import { selectToken, selectUser } from "../store/user/selectors";
 import { logOut } from "../store/user/slice";
 import { NavLink } from "react-router-dom";
+import { LogoutButton, Text } from "../styled";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
 
   const token = useSelector(selectToken);
+  const user = useSelector(selectUser);
+  const userName = user ? user.firstName : "";
 
   return (
     <Nav>
@@ -18,7 +21,22 @@ export const Navbar = () => {
       </Link>
       <div>
         {token ? (
-          <button onClick={() => dispatch(logOut())}>Logout</button>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "1.25rem",
+              alignItems: "baseline",
+              paddingBottom: "0rem",
+            }}
+          >
+            <Text>
+              Welcome <b>{userName}</b>
+            </Text>
+            <LogoutButton onClick={() => dispatch(logOut())}>
+              Logout
+            </LogoutButton>
+          </div>
         ) : (
           <Link to="/login">Login</Link>
         )}
@@ -28,18 +46,21 @@ export const Navbar = () => {
 };
 
 const Nav = styled.div`
-  padding: 3.5rem 9rem 0rem 5rem;
+  margin-top: -2.5rem;
+  width: 100%;
+  position: static;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 `;
 
 const Link = styled(NavLink)`
+  padding-right: 8.5rem;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   color: #00bfff;
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
   font-size: 0.9rem;
 
   &:hover {
@@ -47,39 +68,15 @@ const Link = styled(NavLink)`
   }
 `;
 
-const Logo = styled.a`
-  padding: 0 2rem 0 10rem;
+const Logo = styled.h1`
+  margin-left: 40%;
+  margin-right: 1rem;
   color: "#00bfff";
   text-decoration: none;
   font-weight: 800;
   font-size: 6rem;
 
   span {
-    font-weight: 600;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 `;
-
-// const Hamburger = styled.div`
-//   display: none;
-//   flex-direction: column;
-//   cursor: pointer;
-//   span {
-//     height: 2px;
-//     width: 25px;
-//     background-color: #ececec;
-//     margin-bottom: 4px;
-//     border-radius: 5px;
-//   }
-
-//   @media (max-width: 780px) {
-//     display: flex;
-//   }
-// `;
-
-// const Menu = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   position: relative;
-// `;
