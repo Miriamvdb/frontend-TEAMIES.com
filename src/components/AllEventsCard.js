@@ -1,7 +1,10 @@
 import { PartiButtonPr, PartiButtonAb, Text, TextXs } from "../styled";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+import { updateParticipation } from "../store/event/thunks";
 
 export const AllEventsCard = ({
+  id,
   title,
   opponent,
   home,
@@ -9,6 +12,13 @@ export const AllEventsCard = ({
   startTime,
   endTime,
 }) => {
+  const dispatch = useDispatch();
+
+  // F5: User can specify participation
+  const handleUpdateParti = (participation) => {
+    dispatch(updateParticipation(id, participation)); // event id from props
+  };
+
   return (
     <div
       style={{
@@ -40,8 +50,13 @@ export const AllEventsCard = ({
           flexDirection: "row",
         }}
       >
-        <PartiButtonPr>P R E S E N T</PartiButtonPr>
-        <PartiButtonAb>A B S E N T</PartiButtonAb>
+        {/* F5: User can specify participation (default: null, present, absent) */}
+        <PartiButtonPr onClick={() => handleUpdateParti(true)}>
+          Present
+        </PartiButtonPr>
+        <PartiButtonAb onClick={() => handleUpdateParti(false)}>
+          Absent
+        </PartiButtonAb>
       </div>
     </div>
   );

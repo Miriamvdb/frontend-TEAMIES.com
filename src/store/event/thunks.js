@@ -15,3 +15,30 @@ export const fetchAllEvents = () => async (dispatch, getState) => {
     console.log(e.message);
   }
 };
+
+// F5: User can specify participation (present=true, absent=false)
+export const updateParticipation =
+  (eventId, participation) => async (dispatch, getState) => {
+    try {
+      const { token } = getState().user;
+
+      dispatch(appLoading());
+
+      const response = await axios.patch(
+        `${apiUrl}/events/${eventId}/participation`,
+        {
+          participation,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("Response updateParticipation thunk", response.data); // only a message: "Participation updated"
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+    }
+  };

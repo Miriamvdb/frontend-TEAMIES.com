@@ -25,9 +25,11 @@ export const AllEvents = () => {
       >
         {allEvents ? (
           allEvents.map((event, index) => {
+            console.log(event);
             return (
               <div key={index}>
                 <AllEventsCard
+                  id={event.id}
                   title={event.title}
                   opponent={event.opponent}
                   home={event.home}
