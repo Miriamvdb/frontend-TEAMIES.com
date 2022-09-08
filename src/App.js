@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/thunks";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { Navbar, MessageBox } from "./components";
+import { Navbar, MessageBox, Footer } from "./components";
 import { Dashboard, Login, SignUp } from "./pages";
 import { selectToken } from "./store/user/selectors";
 
@@ -30,6 +30,7 @@ export const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+      <Footer />
     </div>
   );
 };
