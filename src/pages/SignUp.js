@@ -1,10 +1,10 @@
 import {
   ButtonForm,
   Form,
+  ImgXs,
   Input,
   MainContainer,
   Select,
-  Text,
   TitleCenter,
 } from "../styled";
 import { useEffect, useState } from "react";
@@ -21,7 +21,9 @@ export const SignUp = () => {
   const [line, setLine] = useState("");
   const [position, setPosition] = useState("");
   const [backNumber, setBackNumber] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(
+    "https://welderen.e-golf4u.nl/leden/iframe/img/no-profile-image.jpg"
+  );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -207,6 +209,9 @@ export const SignUp = () => {
             value={image}
             onChange={(e) => setImage(e.target.value)}
           />
+          {image ? (
+            <ImgXs src={image} alt={firstName} style={{ marginTop: "2rem" }} />
+          ) : null}
           <br />
           <ButtonForm type="submit">Sign Up</ButtonForm>
         </Form>
