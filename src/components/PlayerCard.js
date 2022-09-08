@@ -1,4 +1,4 @@
-import { ImgXs, Text } from "../styled";
+import { ImgM, Text } from "../styled";
 
 export const PlayerCard = ({
   image,
@@ -14,13 +14,13 @@ export const PlayerCard = ({
         width: "170px",
       }}
     >
-      <ImgXs src={image} alt="" />
+      <ImgM src={image} alt="" />
       <Text>
         <b>
           {firstName} {lastName}
         </b>
       </Text>
-      <Text>{backNumber === null ? "" : `#${backNumber}`}</Text>
+      <Text>{backNumber === null ? "" : `${backNumber}`}</Text>
       <Text>{line}</Text>
       <Text>{position}</Text>
     </div>

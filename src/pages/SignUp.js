@@ -1,7 +1,7 @@
 import {
   ButtonForm,
   Form,
-  ImgXs,
+  ImgM,
   Input,
   MainContainer,
   Select,
@@ -210,7 +210,7 @@ export const SignUp = () => {
             onChange={(e) => setImage(e.target.value)}
           />
           {image ? (
-            <ImgXs src={image} alt={firstName} style={{ marginTop: "2rem" }} />
+            <ImgM src={image} alt={firstName} style={{ marginTop: "2rem" }} />
           ) : null}
           <br />
           <ButtonForm type="submit">Sign Up</ButtonForm>

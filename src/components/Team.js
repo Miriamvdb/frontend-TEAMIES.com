@@ -15,14 +15,13 @@ export const Team = () => {
   }, [dispatch]);
 
   return (
-    <SubContainer style={{ flex: 3 }}>
+    <SubContainer style={{ flex: 2 }}>
       <Title>Team</Title>
       <div
         style={{
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "center",
           gap: "2.5rem",
           overflow: "scroll",
           height: "13rem",

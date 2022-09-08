@@ -8,10 +8,10 @@ export const Dashboard = () => {
     >
       <div style={{ display: "flex", flexDirection: "row", gap: "1.25rem" }}>
         <MyProfile />
-        <Team />
+        <AllEvents />
       </div>
       <div style={{ display: "flex", flexDirection: "row", gap: "1.25rem" }}>
-        <AllEvents />
+        <Team />
         <MySchedule />
       </div>
     </MainContainer>
