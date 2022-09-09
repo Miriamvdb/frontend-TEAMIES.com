@@ -29,7 +29,25 @@ export const LogoutButton = styled.button`
   }
 `;
 
-export const PartiButtonPr = styled.button`
+export const PartiButtonOpen = styled.button`
+  background: none;
+  margin: 1.25rem 1.25rem 0 0;
+  color: white;
+  width: 6rem;
+  height: 2rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: 2px solid white;
+  border-radius: 25px;
+  cursor: pointer;
+
+  &:hover {
+    text-shadow: 0 0 10px #59d6ff;
+    box-shadow: 0 0 10px #59d6ff;
+  }
+`;
+
+export const PartiButtonPresent = styled.button`
   background-image: linear-gradient(165deg, #00bfff, #5fffbc);
   margin: 1.25rem 1.25rem 0 0;
   color: white;
@@ -39,15 +57,16 @@ export const PartiButtonPr = styled.button`
   font-weight: bold;
   border: 2px solid white;
   border-radius: 25px;
+  cursor: pointer;
 
   &:hover {
-    transform: scale(1.02);
+    text-shadow: 0 0 10px #5fffbc;
+    box-shadow: 0 0 10px #5fffbc;
   }
 `;
 
-export const PartiButtonAb = styled.button`
-  background-image: linear-gradient(165deg, #ff6347, rgb(255, 213, 0));
-  ${"" /* background: none; // Look for when the button is not clicked yet */}
+export const PartiButtonAbsent = styled.button`
+  background-image: linear-gradient(165deg, #ff6347, #ffd500);
   margin: 1.25rem 1.25rem 0 0;
   color: white;
   width: 6rem;
@@ -56,8 +75,10 @@ export const PartiButtonAb = styled.button`
   font-weight: bold;
   border: 2px solid white;
   border-radius: 25px;
+  cursor: pointer;
 
   &:hover {
-    transform: scale(1.02);
+    text-shadow: 0 0 10px #ff6347;
+    box-shadow: 0 0 10px #ff6347;
   }
 `;

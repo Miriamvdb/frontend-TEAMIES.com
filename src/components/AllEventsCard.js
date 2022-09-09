@@ -1,6 +1,13 @@
-import { PartiButtonPr, PartiButtonAb, Text, TextXs } from "../styled";
+import {
+  PartiButtonAbsent,
+  PartiButtonOpen,
+  PartiButtonPresent,
+  Text,
+  TextXs,
+} from "../styled";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAllPlayers } from "../store/player/selectors";
 import { updateParticipation } from "../store/event/thunks";
 
 export const AllEventsCard = ({
@@ -11,13 +18,18 @@ export const AllEventsCard = ({
   date,
   startTime,
   endTime,
+  // attendees,
+  participation,
 }) => {
   const dispatch = useDispatch();
+  const allPlayers = useSelector(selectAllPlayers);
 
   // F5: User can specify participation
   const handleUpdateParti = (participation) => {
     dispatch(updateParticipation(id, participation)); // event id from props
   };
+
+  if (!allPlayers) return <Text>Loading...</Text>;
 
   return (
     <div
@@ -41,7 +53,9 @@ export const AllEventsCard = ({
           </b>
         </Text>
         <TextXs>
-          {startTime.slice(0, 5)} - {endTime.slice(0, 5)}
+          {startTime.slice(0, 5)} - {endTime.slice(0, 5)} | Attendees{" "}
+          {/* {attendees.length} /  */}
+          {allPlayers.length}
         </TextXs>
       </div>
       <div
@@ -51,12 +65,46 @@ export const AllEventsCard = ({
         }}
       >
         {/* F5: User can specify participation (default: null, present, absent) */}
-        <PartiButtonPr onClick={() => handleUpdateParti(true)}>
-          Present
-        </PartiButtonPr>
-        <PartiButtonAb onClick={() => handleUpdateParti(false)}>
-          Absent
-        </PartiButtonAb>
+        {participation === "open" ? (
+          <>
+            <PartiButtonOpen onClick={() => handleUpdateParti(true)}>
+              Present
+            </PartiButtonOpen>
+
+            <PartiButtonOpen onClick={() => handleUpdateParti(false)}>
+              Absent
+            </PartiButtonOpen>
+          </>
+        ) : (
+          <></>
+        )}
+
+        {participation === "absent" ? (
+          <>
+            <PartiButtonOpen onClick={() => handleUpdateParti(true)}>
+              Present
+            </PartiButtonOpen>
+            <PartiButtonAbsent onClick={() => handleUpdateParti(false)}>
+              Absent
+            </PartiButtonAbsent>
+          </>
+        ) : (
+          <></>
+        )}
+
+        {participation === "present" ? (
+          <>
+            <PartiButtonPresent onClick={() => handleUpdateParti(true)}>
+              Present
+            </PartiButtonPresent>
+
+            <PartiButtonOpen onClick={() => handleUpdateParti(false)}>
+              Absent
+            </PartiButtonOpen>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
