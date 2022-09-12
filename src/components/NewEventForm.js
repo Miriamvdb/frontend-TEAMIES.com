@@ -144,7 +144,15 @@ export const NewEventForm = () => {
         </div>
 
         {extraFields[categoryId]?.map((field, index) => (
-          <>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+            key={index}
+          >
             {field.label && <Label>{field.label}</Label>}
             <Input
               key={index}
@@ -153,7 +161,7 @@ export const NewEventForm = () => {
               onChange={field.onChange}
               type={field.type}
             />
-          </>
+          </div>
         ))}
 
         <br />

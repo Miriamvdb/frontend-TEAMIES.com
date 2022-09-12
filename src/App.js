@@ -19,7 +19,7 @@ export const App = () => {
     if (token === null && location.pathname !== "/signup") {
       navigate("/login");
     }
-  }, [dispatch, token, navigate]);
+  }, [dispatch, token, navigate, location.pathname]);
 
   return (
     <div>

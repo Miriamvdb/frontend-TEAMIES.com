@@ -56,6 +56,7 @@ export const AllEvents = () => {
               <BiListPlus />
             </ButtonModal>
             <Dialog
+              aria-label="NewEventForm"
               isOpen={open}
               style={{
                 width: "auto",
