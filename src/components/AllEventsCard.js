@@ -18,7 +18,7 @@ export const AllEventsCard = ({
   date,
   startTime,
   endTime,
-  // attendees,
+  attendees,
   participation,
 }) => {
   const dispatch = useDispatch();
@@ -30,6 +30,11 @@ export const AllEventsCard = ({
   };
 
   if (!allPlayers) return <Text>Loading...</Text>;
+
+  // F5: Amount of (updated) attendees
+  const presentAttendees = attendees?.filter(
+    (a) => a.participating?.participation
+  ).length;
 
   return (
     <div
@@ -54,8 +59,7 @@ export const AllEventsCard = ({
         </Text>
         <TextXs>
           {startTime?.slice(0, 5)} - {endTime?.slice(0, 5)} | Attendees{" "}
-          {/* {attendees.length} /  */}
-          {allPlayers.length}
+          {presentAttendees} / {allPlayers.length}
         </TextXs>
       </div>
       <div

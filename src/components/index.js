@@ -9,3 +9,4 @@ export * from "./AllEventsCard";
 export * from "./Footer";
 export * from "./NewEventForm";
 export * from "./TeamDetails";
+export * from "./AllEventsDetails";

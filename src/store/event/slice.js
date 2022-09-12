@@ -17,8 +17,24 @@ export const eventSlice = createSlice({
     createNewEventSuccess: (state, action) => {
       state.allEvents.push(action.payload);
     },
+
+    // F5: Amount of (updated) attendees
+    updateAttendeesForEvent: (state, action) => {
+      const updatedAttendees = action.payload.updatedAttendees;
+      const eventId = action.payload.eventId;
+
+      const updatedEvents = state.allEvents.map((event) => {
+        if (event.id === eventId) {
+          return { ...event, attendees: updatedAttendees };
+        } else {
+          return event;
+        }
+      });
+      state.allEvents = updatedEvents;
+    },
   },
 });
 
-export const { setAllEvents, createNewEventSuccess } = eventSlice.actions;
+export const { setAllEvents, createNewEventSuccess, updateAttendeesForEvent } =
+  eventSlice.actions;
 export default eventSlice.reducer;

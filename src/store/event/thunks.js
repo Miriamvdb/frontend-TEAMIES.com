@@ -1,7 +1,11 @@
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
 import { appDoneLoading, appLoading } from "../appState/slice";
-import { createNewEventSuccess, setAllEvents } from "./slice";
+import {
+  createNewEventSuccess,
+  setAllEvents,
+  updateAttendeesForEvent,
+} from "./slice";
 import { tokenStillValid } from "../user/slice";
 import { showMessageWithTimeout } from "../appState/thunks";
 
@@ -41,8 +45,11 @@ export const updateParticipation =
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      dispatch(tokenStillValid({ user: response.data }));
+      // F5: Amount of (updated) attendees
+      const updatedAttendees = patchResponse.data.updatedAttendees;
+      dispatch(updateAttendeesForEvent({ eventId, updatedAttendees }));
 
+      dispatch(tokenStillValid({ user: response.data }));
       dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);

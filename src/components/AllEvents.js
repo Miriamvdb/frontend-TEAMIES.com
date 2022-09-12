@@ -4,8 +4,8 @@ import { selectAllEvents } from "../store/event/selectors";
 import { fetchAllEvents } from "../store/event/thunks";
 import { selectUser } from "../store/user/selectors";
 import { ButtonModal, SubContainer, Text, Title } from "../styled";
-import { AllEventsCard, NewEventForm } from "./";
-import { BiListPlus } from "react-icons/bi";
+import { AllEventsCard, AllEventsDetails, NewEventForm } from "./";
+import { CgPlayListSearch, CgPlayListAdd } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
 
 // Modal
@@ -20,6 +20,7 @@ export const AllEvents = () => {
 
   // Modal
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllEvents());
@@ -47,44 +48,70 @@ export const AllEvents = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
         <Title>All events</Title>
-        {isAdmin ? (
-          <>
-            <ButtonModal onClick={() => setOpen(!open)}>
-              <BiListPlus />
-            </ButtonModal>
-            <Dialog
-              aria-label="NewEventForm"
-              isOpen={open}
-              style={{
-                width: "auto",
-                height: "auto",
-                margin: "5rem",
-                padding: "0rem",
-                borderRadius: "25px",
-                opacity: "95%",
-                transition: "transform 2s",
-              }}
-            >
-              <>
-                <ButtonModal
-                  style={{ position: "absolute", left: "6rem", top: "6rem" }}
-                  onClick={() => setOpen(false)}
-                >
-                  <IoClose />
-                </ButtonModal>
-                <NewEventForm />
-              </>
-            </Dialog>
-          </>
-        ) : null}
+        <div>
+          {isAdmin ? (
+            <>
+              <ButtonModal onClick={() => setOpen(!open)}>
+                <CgPlayListAdd />
+              </ButtonModal>
+              <Dialog
+                aria-label="NewEventForm"
+                isOpen={open}
+                style={{
+                  width: "auto",
+                  height: "auto",
+                  margin: "5rem",
+                  padding: "0rem",
+                  borderRadius: "25px",
+                }}
+              >
+                <>
+                  <ButtonModal
+                    style={{ position: "absolute", left: "6rem", top: "6rem" }}
+                    onClick={() => setOpen(false)}
+                  >
+                    <IoClose />
+                  </ButtonModal>
+                  <NewEventForm />
+                </>
+              </Dialog>
+            </>
+          ) : null}
+
+          <ButtonModal onClick={() => setOpen2(!open2)}>
+            <CgPlayListSearch />
+          </ButtonModal>
+          <Dialog
+            aria-label="AllEventsDetails"
+            isOpen={open2}
+            style={{
+              width: "auto",
+              height: "auto",
+              margin: "5rem",
+              padding: "0rem",
+              borderRadius: "25px",
+            }}
+          >
+            <>
+              <ButtonModal
+                style={{ position: "absolute", left: "6rem", top: "6rem" }}
+                onClick={() => setOpen2(false)}
+              >
+                <IoClose />
+              </ButtonModal>
+              <AllEventsDetails />
+            </>
+          </Dialog>
+        </div>
       </div>
       <div
         style={{
           overflow: "scroll",
-          height: "13rem",
+          height: "24vh",
         }}
       >
         {allEvents && user ? (
@@ -99,9 +126,7 @@ export const AllEvents = () => {
                   date={event.date}
                   startTime={event.startTime}
                   endTime={event.endTime}
-                  // attendees={event.attendees.map((a) => {
-                  //   return a.participating.participation;
-                  // })}
+                  attendees={event.attendees}
                   participation={getEventParticipation(
                     event.id,
                     user.myParticipation
