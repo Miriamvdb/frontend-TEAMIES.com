@@ -4,7 +4,7 @@ import { selectAllEvents } from "../store/event/selectors";
 import { fetchAllEvents } from "../store/event/thunks";
 import { selectUser } from "../store/user/selectors";
 import { ButtonModal, SubContainer, Text, Title } from "../styled";
-import { AllEventsCard, AllEventsDetails, NewEventForm } from "./";
+import { AllEventsCard, AllEventsMod, NewEventForm } from "./";
 import { CgPlayListSearch, CgPlayListAdd } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
 
@@ -86,7 +86,7 @@ export const AllEvents = () => {
             <CgPlayListSearch />
           </ButtonModal>
           <Dialog
-            aria-label="AllEventsDetails"
+            aria-label="AllEventsMod"
             isOpen={open2}
             style={{
               width: "auto",
@@ -103,7 +103,7 @@ export const AllEvents = () => {
               >
                 <IoClose />
               </ButtonModal>
-              <AllEventsDetails />
+              <AllEventsMod />
             </>
           </Dialog>
         </div>

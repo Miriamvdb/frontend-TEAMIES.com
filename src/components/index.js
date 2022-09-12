@@ -8,5 +8,5 @@ export * from "./PlayerCard";
 export * from "./AllEventsCard";
 export * from "./Footer";
 export * from "./NewEventForm";
-export * from "./TeamDetails";
-export * from "./AllEventsDetails";
+export * from "./TeamMod";
+export * from "./AllEventsMod";

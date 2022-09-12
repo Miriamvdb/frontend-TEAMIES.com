@@ -10,7 +10,7 @@ import { IoClose } from "react-icons/io5";
 // Modal
 import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
-import { TeamDetails } from "./TeamDetails";
+import { TeamMod } from "./TeamMod";
 
 export const Team = () => {
   const dispatch = useDispatch();
@@ -55,7 +55,7 @@ export const Team = () => {
             >
               <IoClose />
             </ButtonModal>
-            <TeamDetails />
+            <TeamMod />
           </>
         </Dialog>
       </div>

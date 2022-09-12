@@ -5,7 +5,7 @@ import { fetchAllPlayers } from "../store/player/thunks";
 import { ModalContainer, Text } from "../styled";
 import { PlayerCard } from "./PlayerCard";
 
-export const TeamDetails = () => {
+export const TeamMod = () => {
   const dispatch = useDispatch();
   const allPlayers = useSelector(selectAllPlayers);
 

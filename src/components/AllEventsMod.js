@@ -6,7 +6,7 @@ import { selectUser } from "../store/user/selectors";
 import { ModalContainer, Text } from "../styled";
 import { AllEventsCard } from ".";
 
-export const AllEventsDetails = () => {
+export const AllEventsMod = () => {
   const dispatch = useDispatch();
   const allEvents = useSelector(selectAllEvents);
   const user = useSelector(selectUser);
