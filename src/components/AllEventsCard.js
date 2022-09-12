@@ -53,7 +53,7 @@ export const AllEventsCard = ({
           </b>
         </Text>
         <TextXs>
-          {startTime.slice(0, 5)} - {endTime.slice(0, 5)} | Attendees{" "}
+          {startTime?.slice(0, 5)} - {endTime?.slice(0, 5)} | Attendees{" "}
           {/* {attendees.length} /  */}
           {allPlayers.length}
         </TextXs>

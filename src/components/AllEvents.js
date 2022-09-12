@@ -1,15 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllEvents } from "../store/event/selectors";
 import { fetchAllEvents } from "../store/event/thunks";
 import { selectUser } from "../store/user/selectors";
-import { SubContainer, Text, Title } from "../styled";
-import { AllEventsCard } from "./AllEventsCard";
+import { ButtonModal, SubContainer, Text, Title } from "../styled";
+import { AllEventsCard } from "./";
+import { BiListPlus } from "react-icons/bi";
 
 export const AllEvents = () => {
   const dispatch = useDispatch();
   const allEvents = useSelector(selectAllEvents);
   const user = useSelector(selectUser);
+  const isAdmin = user ? user.isAdmin : false;
 
   useEffect(() => {
     dispatch(fetchAllEvents());
@@ -32,7 +34,22 @@ export const AllEvents = () => {
 
   return (
     <SubContainer style={{ flex: 3 }}>
-      <Title>All events</Title>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <Title>All events</Title>
+        {isAdmin ? (
+          <>
+            <ButtonModal>
+              <BiListPlus />
+            </ButtonModal>
+          </>
+        ) : null}
+      </div>
       <div
         style={{
           overflow: "scroll",

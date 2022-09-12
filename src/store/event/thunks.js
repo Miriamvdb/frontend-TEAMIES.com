@@ -1,8 +1,10 @@
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
 import { appDoneLoading, appLoading } from "../appState/slice";
-import { setAllEvents } from "./slice";
+import { createNewEventSuccess, setAllEvents } from "./slice";
 import { tokenStillValid } from "../user/slice";
+import { showMessageWithTimeout } from "../appState/thunks";
+
 // F2 - GET all events incl. corresponding category
 export const fetchAllEvents = () => async (dispatch, getState) => {
   try {
@@ -40,6 +42,42 @@ export const updateParticipation =
       });
 
       dispatch(tokenStillValid({ user: response.data }));
+
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
+// F7: Admin can create a new event
+export const createNewEvent =
+  (categoryId, title, date, startTime, endTime, opponent, home, descr) =>
+  async (dispatch, getState) => {
+    try {
+      const { token } = getState().user;
+      dispatch(appLoading());
+
+      const response = await axios.post(
+        `${apiUrl}/events/newevent/${categoryId}`,
+        {
+          title,
+          date,
+          startTime,
+          endTime,
+          opponent,
+          home,
+          descr,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch(createNewEventSuccess(response.data.newEvent));
+      dispatch(
+        showMessageWithTimeout("success", false, "Event created!", 2000)
+      );
 
       dispatch(appDoneLoading());
     } catch (e) {

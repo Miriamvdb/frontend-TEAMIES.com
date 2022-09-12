@@ -7,3 +7,4 @@ export * from "./MySchedule";
 export * from "./PlayerCard";
 export * from "./AllEventsCard";
 export * from "./Footer";
+export * from "./NewEventForm";

@@ -12,8 +12,13 @@ export const eventSlice = createSlice({
     setAllEvents: (state, action) => {
       state.allEvents = action.payload;
     },
+
+    // F7 - Admin can create a new event
+    createNewEventSuccess: (state, action) => {
+      state.allEvents.push(action.payload);
+    },
   },
 });
 
-export const { setAllEvents } = eventSlice.actions;
+export const { setAllEvents, createNewEventSuccess } = eventSlice.actions;
 export default eventSlice.reducer;
