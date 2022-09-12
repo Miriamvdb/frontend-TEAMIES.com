@@ -22,3 +22,15 @@ export const SubContainer = styled.div`
     rgb(95, 255, 188, 0.225)
   );
 `;
+
+export const ModalContainer = styled.div`
+  padding: 3rem;
+  border-radius: 25px;
+  color: "#00bfff";
+  transition: all 0.2s ease-in;
+  background-image: linear-gradient(
+    170deg,
+    rgba(0, 191, 255, 0.225),
+    rgb(95, 255, 188, 0.225)
+  );
+`;

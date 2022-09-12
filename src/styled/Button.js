@@ -38,6 +38,7 @@ export const PartiButtonOpen = styled.button`
   font-size: 0.9rem;
   font-weight: bold;
   border: 2px solid white;
+  transition: all 0.2s ease-in;
   border-radius: 25px;
   cursor: pointer;
 
@@ -56,6 +57,7 @@ export const PartiButtonPresent = styled.button`
   font-size: 0.9rem;
   font-weight: bold;
   border: 2px solid white;
+  transition: all 0.2s ease-in;
   border-radius: 25px;
   cursor: pointer;
 
@@ -74,11 +76,25 @@ export const PartiButtonAbsent = styled.button`
   font-size: 0.9rem;
   font-weight: bold;
   border: 2px solid white;
+  transition: all 0.2s ease-in;
   border-radius: 25px;
   cursor: pointer;
 
   &:hover {
     text-shadow: 0 0 10px #ff6347;
     box-shadow: 0 0 10px #ff6347;
+  }
+`;
+
+export const ButtonModal = styled.button`
+  cursor: pointer;
+  background: none;
+  color: #00bfff;
+  border: none;
+  transition: all 0.2s ease-in;
+  font-size: 1.75rem;
+
+  &:hover {
+    color: #59d6ff;
   }
 `;

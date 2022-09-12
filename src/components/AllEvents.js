@@ -4,14 +4,22 @@ import { selectAllEvents } from "../store/event/selectors";
 import { fetchAllEvents } from "../store/event/thunks";
 import { selectUser } from "../store/user/selectors";
 import { ButtonModal, SubContainer, Text, Title } from "../styled";
-import { AllEventsCard } from "./";
+import { AllEventsCard, NewEventForm } from "./";
 import { BiListPlus } from "react-icons/bi";
+import { IoClose } from "react-icons/io5";
+
+// Modal
+import { Dialog } from "@reach/dialog";
+import "@reach/dialog/styles.css";
 
 export const AllEvents = () => {
   const dispatch = useDispatch();
   const allEvents = useSelector(selectAllEvents);
   const user = useSelector(selectUser);
   const isAdmin = user ? user.isAdmin : false;
+
+  // Modal
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllEvents());
@@ -44,9 +52,31 @@ export const AllEvents = () => {
         <Title>All events</Title>
         {isAdmin ? (
           <>
-            <ButtonModal>
+            <ButtonModal onClick={() => setOpen(!open)}>
               <BiListPlus />
             </ButtonModal>
+            <Dialog
+              isOpen={open}
+              style={{
+                width: "auto",
+                height: "auto",
+                margin: "5rem",
+                padding: "0rem",
+                borderRadius: "25px",
+                opacity: "95%",
+                transition: "transform 2s",
+              }}
+            >
+              <>
+                <ButtonModal
+                  style={{ position: "absolute", left: "6rem", top: "6rem" }}
+                  onClick={() => setOpen(false)}
+                >
+                  <IoClose />
+                </ButtonModal>
+                <NewEventForm />
+              </>
+            </Dialog>
           </>
         ) : null}
       </div>

@@ -6,3 +6,4 @@ export * from "./LinkWord";
 export * from "./Form";
 export * from "./Text";
 export * from "./Image";
+export * from "./Label";

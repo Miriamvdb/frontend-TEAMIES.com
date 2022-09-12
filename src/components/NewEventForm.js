@@ -12,7 +12,7 @@ import {
   Select,
   Text,
   TitleCenter,
-  MainContainer,
+  ModalContainer,
 } from "../styled";
 
 export const NewEventForm = () => {
@@ -89,7 +89,7 @@ export const NewEventForm = () => {
   console.log("extraFields", categoryId);
 
   return (
-    <MainContainer>
+    <ModalContainer>
       <TitleCenter>Create New Event</TitleCenter>
       <Form onSubmit={submitForm}>
         <Select
@@ -159,6 +159,6 @@ export const NewEventForm = () => {
         <br />
         <ButtonForm type="submit">Create new event</ButtonForm>
       </Form>
-    </MainContainer>
+    </ModalContainer>
   );
 };
