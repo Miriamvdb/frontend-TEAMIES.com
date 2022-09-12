@@ -86,8 +86,6 @@ export const NewEventForm = () => {
     setHome("");
   };
 
-  console.log("extraFields", categoryId);
-
   return (
     <ModalContainer>
       <TitleCenter>Create New Event</TitleCenter>

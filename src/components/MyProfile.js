@@ -9,7 +9,7 @@ export const MyProfile = () => {
   const { image, firstName, lastName, line, position, backNumber } = me;
 
   return (
-    <SubContainer style={{ flex: 1 }}>
+    <SubContainer style={{ paddingTop: "2rem", flex: 1 }}>
       {me ? (
         <div>
           <ImgM src={image} alt="" />
@@ -19,8 +19,8 @@ export const MyProfile = () => {
               position: "absolute",
               opacity: "15%",
               fontWeight: "bold",
-              top: "10.5rem",
-              left: "15rem",
+              top: "10rem",
+              left: "13rem",
             }}
           >
             {backNumber === null ? "" : `${backNumber}`}

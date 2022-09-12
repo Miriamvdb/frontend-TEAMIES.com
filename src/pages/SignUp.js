@@ -54,7 +54,12 @@ export const SignUp = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <MainContainer>
+      <MainContainer
+        style={{
+          overflow: "scroll",
+          height: "61vh",
+        }}
+      >
         <TitleCenter>Sign Up</TitleCenter>
         <Form
           onSubmit={submitForm}

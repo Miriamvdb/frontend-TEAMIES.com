@@ -1,9 +1,9 @@
 import { AllEvents, MyProfile, MySchedule, Team } from "../components";
-import { MainContainer } from "../styled";
+import { DashboardContainer } from "../styled";
 
 export const Dashboard = () => {
   return (
-    <MainContainer
+    <DashboardContainer
       style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
     >
       <div style={{ display: "flex", flexDirection: "row", gap: "1.25rem" }}>
@@ -14,6 +14,6 @@ export const Dashboard = () => {
         <Team />
         <MySchedule />
       </div>
-    </MainContainer>
+    </DashboardContainer>
   );
 };

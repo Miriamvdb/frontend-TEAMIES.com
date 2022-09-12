@@ -37,7 +37,7 @@ export const Team = () => {
           <CgPlayListSearch />
         </ButtonModal>
         <Dialog
-          aria-label="NewEventForm"
+          aria-label="TeamDetails"
           isOpen={open}
           style={{
             width: "auto",
@@ -45,7 +45,6 @@ export const Team = () => {
             margin: "5rem",
             padding: "0rem",
             borderRadius: "25px",
-            opacity: "95%",
             transition: "transform 2s",
           }}
         >
@@ -67,7 +66,7 @@ export const Team = () => {
           flexWrap: "wrap",
           gap: "2.5rem",
           overflow: "scroll",
-          height: "13rem",
+          height: "20vh",
         }}
       >
         {allPlayers ? (

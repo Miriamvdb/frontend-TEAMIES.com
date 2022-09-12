@@ -7,7 +7,7 @@ export const Footer = () => {
         textAlign: "center",
         marginLeft: "25%",
         paddingBottom: "5rem",
-        opacity: "50%",
+        opacity: "75%",
       }}
     >
       Copyright &copy; {new Date().getFullYear()} <b>TEAMIES.com</b>
