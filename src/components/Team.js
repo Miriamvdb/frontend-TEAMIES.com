@@ -1,14 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllPlayers } from "../store/player/selectors";
 import { fetchAllPlayers } from "../store/player/thunks";
-import { SubContainer, Text, Title } from "../styled";
+import { ButtonModal, SubContainer, Text, Title } from "../styled";
 import { PlayerCard } from "./PlayerCard";
+import { CgPlayListSearch } from "react-icons/cg";
+import { IoClose } from "react-icons/io5";
+
+// Modal
+import { Dialog } from "@reach/dialog";
+import "@reach/dialog/styles.css";
+import { TeamDetails } from "./TeamDetails";
 
 export const Team = () => {
   const dispatch = useDispatch();
   const allPlayers = useSelector(selectAllPlayers);
-  // console.log("Selected allPlayers?", allPlayers);
+
+  // Modal
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllPlayers());
@@ -16,7 +25,41 @@ export const Team = () => {
 
   return (
     <SubContainer style={{ flex: 2 }}>
-      <Title>Team</Title>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <Title>Team</Title>
+        <ButtonModal onClick={() => setOpen(!open)}>
+          <CgPlayListSearch />
+        </ButtonModal>
+        <Dialog
+          aria-label="NewEventForm"
+          isOpen={open}
+          style={{
+            width: "auto",
+            height: "auto",
+            margin: "5rem",
+            padding: "0rem",
+            borderRadius: "25px",
+            opacity: "95%",
+            transition: "transform 2s",
+          }}
+        >
+          <>
+            <ButtonModal
+              style={{ position: "absolute", left: "6rem", top: "6rem" }}
+              onClick={() => setOpen(false)}
+            >
+              <IoClose />
+            </ButtonModal>
+            <TeamDetails />
+          </>
+        </Dialog>
+      </div>
       <div
         style={{
           display: "flex",

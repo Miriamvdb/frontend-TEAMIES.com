@@ -8,3 +8,4 @@ export * from "./PlayerCard";
 export * from "./AllEventsCard";
 export * from "./Footer";
 export * from "./NewEventForm";
+export * from "./TeamDetails";
