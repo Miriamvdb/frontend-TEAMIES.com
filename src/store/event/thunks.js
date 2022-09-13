@@ -1,6 +1,5 @@
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
-import { appDoneLoading, appLoading } from "../appState/slice";
 import {
   createNewEventSuccess,
   setAllEvents,
@@ -13,10 +12,8 @@ import { showMessageWithTimeout } from "../appState/thunks";
 // F2: GET all events incl. corresponding category
 export const fetchAllEvents = () => async (dispatch, getState) => {
   try {
-    dispatch(appLoading());
     const response = await axios.get(`${apiUrl}/events`);
     dispatch(setAllEvents(response.data));
-    dispatch(appDoneLoading());
   } catch (e) {
     console.log(e.message);
   }
@@ -27,7 +24,6 @@ export const updateParticipation =
   (eventId, participation) => async (dispatch, getState) => {
     try {
       const { token } = getState().user;
-      dispatch(appLoading());
 
       const patchResponse = await axios.patch(
         `${apiUrl}/events/${eventId}/participation`,
@@ -51,7 +47,6 @@ export const updateParticipation =
       dispatch(updateAttendeesForEvent({ eventId, updatedAttendees }));
 
       dispatch(tokenStillValid({ user: response.data }));
-      dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);
     }
@@ -63,7 +58,6 @@ export const createNewEvent =
   async (dispatch, getState) => {
     try {
       const { token } = getState().user;
-      dispatch(appLoading());
 
       const response = await axios.post(
         `${apiUrl}/events/newevent/${categoryId}`,
@@ -86,8 +80,6 @@ export const createNewEvent =
       dispatch(
         showMessageWithTimeout("success", false, "Event created!", 2000)
       );
-
-      dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);
     }
@@ -96,10 +88,8 @@ export const createNewEvent =
 // F9: Get event details
 export const fetchEventDetails = (id) => async (dispatch, getState) => {
   try {
-    dispatch(appLoading());
     const response = await axios.get(`${apiUrl}/events/${id}`);
     dispatch(setEventDetails(response.data));
-    dispatch(appDoneLoading());
   } catch (e) {
     console.log(e.message);
   }
