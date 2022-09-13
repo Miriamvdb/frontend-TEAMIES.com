@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectAllEvents } from "../store/event/selectors";
 import { fetchAllEvents } from "../store/event/thunks";
 import { selectUser } from "../store/user/selectors";
-import { ModalContainer, Text } from "../styled";
+import { ModalContainer } from "../styled";
 import { AllEventsCard } from ".";
+import { Roller } from "react-awesome-spinners";
 
 export const AllEventsMod = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ export const AllEventsMod = () => {
             );
           })
         ) : (
-          <Text>Loading..</Text>
+          <Roller />
         )}
       </div>
     </ModalContainer>

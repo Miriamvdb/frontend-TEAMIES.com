@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectAllEvents } from "../store/event/selectors";
 import { fetchAllEvents } from "../store/event/thunks";
 import { selectUser } from "../store/user/selectors";
-import { ButtonModal, SubContainer, Text, Title } from "../styled";
+import { ButtonModal, SubContainer, Title } from "../styled";
 import { AllEventsCard, AllEventsMod, NewEventForm } from "./";
 import { CgPlayListSearch, CgPlayListAdd } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
+import { Roller } from "react-awesome-spinners";
 
 // Modal
 import { Dialog } from "@reach/dialog";
@@ -136,7 +137,7 @@ export const AllEvents = () => {
             );
           })
         ) : (
-          <Text>Loading..</Text>
+          <Roller />
         )}
       </div>
     </SubContainer>

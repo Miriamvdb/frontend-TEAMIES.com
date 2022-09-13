@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectUser } from "../store/user/selectors";
 import { ImgM, SubContainer, Text } from "../styled";
+import { Roller } from "react-awesome-spinners";
 
 export const MyProfile = () => {
   const me = useSelector(selectUser);
@@ -39,7 +40,7 @@ export const MyProfile = () => {
           </Text>
         </div>
       ) : (
-        <Text>Loading...</Text>
+        <Roller />
       )}
     </SubContainer>
   );

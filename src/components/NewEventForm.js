@@ -10,10 +10,10 @@ import {
   InputXs,
   Label,
   Select,
-  Text,
   TitleCenter,
   ModalContainer,
 } from "../styled";
+import { Roller } from "react-awesome-spinners";
 
 export const NewEventForm = () => {
   const dispatch = useDispatch();
@@ -105,7 +105,7 @@ export const NewEventForm = () => {
               );
             })
           ) : (
-            <Text>"Loading.."</Text>
+            <Roller />
           )}
         </Select>
         <Input

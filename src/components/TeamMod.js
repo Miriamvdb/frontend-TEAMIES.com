@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllPlayers } from "../store/player/selectors";
 import { fetchAllPlayers } from "../store/player/thunks";
-import { ModalContainer, Text } from "../styled";
+import { ModalContainer } from "../styled";
 import { PlayerCard } from "./PlayerCard";
+import { Roller } from "react-awesome-spinners";
 
 export const TeamMod = () => {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ export const TeamMod = () => {
             );
           })
         ) : (
-          <Text>Loading..</Text>
+          <Roller />
         )}
       </div>
     </ModalContainer>
