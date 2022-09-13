@@ -18,7 +18,7 @@ export const MySchedule = () => {
         }}
       >
         {me ? (
-          me.mySchedule.length === 0 ? (
+          me.mySchedule?.length === 0 ? (
             <>
               <Text>Come on, get off that lazy ass!</Text>
               <Text>The trainer will be very disapointed...</Text>
@@ -28,7 +28,7 @@ export const MySchedule = () => {
               </Title>
             </>
           ) : (
-            me.mySchedule.map((mS, index) => {
+            me.mySchedule?.map((mS, index) => {
               return (
                 <div key={index}>
                   <MyScheduleCard
