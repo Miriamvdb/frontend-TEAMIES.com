@@ -98,3 +98,10 @@ export const ButtonModal = styled.button`
     color: #59d6ff;
   }
 `;
+
+export const OpenDetailsButton = styled.button`
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: all 0.2s ease-in;
+`;

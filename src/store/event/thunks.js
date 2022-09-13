@@ -4,12 +4,13 @@ import { appDoneLoading, appLoading } from "../appState/slice";
 import {
   createNewEventSuccess,
   setAllEvents,
+  setEventDetails,
   updateAttendeesForEvent,
 } from "./slice";
 import { tokenStillValid } from "../user/slice";
 import { showMessageWithTimeout } from "../appState/thunks";
 
-// F2 - GET all events incl. corresponding category
+// F2: GET all events incl. corresponding category
 export const fetchAllEvents = () => async (dispatch, getState) => {
   try {
     dispatch(appLoading());
@@ -91,3 +92,15 @@ export const createNewEvent =
       console.log(e.message);
     }
   };
+
+// F9: Get event details
+export const fetchEventDetails = (id) => async (dispatch, getState) => {
+  try {
+    dispatch(appLoading());
+    const response = await axios.get(`${apiUrl}/events/${id}`);
+    dispatch(setEventDetails(response.data));
+    dispatch(appDoneLoading());
+  } catch (e) {
+    console.log(e.message);
+  }
+};

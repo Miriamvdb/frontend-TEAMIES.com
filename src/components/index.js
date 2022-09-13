@@ -10,3 +10,4 @@ export * from "./Footer";
 export * from "./NewEventForm";
 export * from "./TeamMod";
 export * from "./AllEventsMod";
+export * from "./EventDetails";

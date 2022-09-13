@@ -5,3 +5,5 @@ export const selectAllEvents = (reduxState) => {
     (eventA, eventB) => new Date(eventA.date) - new Date(eventB.date)
   );
 };
+
+export const selectEventDetails = (reduxState) => reduxState.event.eventDetails;

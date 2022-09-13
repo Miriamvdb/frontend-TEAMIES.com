@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   allEvents: [],
+  eventDetails: null,
 };
 
 export const eventSlice = createSlice({
@@ -32,9 +33,18 @@ export const eventSlice = createSlice({
       });
       state.allEvents = updatedEvents;
     },
+
+    // F9: Get event details
+    setEventDetails: (state, action) => {
+      state.eventDetails = action.payload;
+    },
   },
 });
 
-export const { setAllEvents, createNewEventSuccess, updateAttendeesForEvent } =
-  eventSlice.actions;
+export const {
+  setAllEvents,
+  createNewEventSuccess,
+  updateAttendeesForEvent,
+  setEventDetails,
+} = eventSlice.actions;
 export default eventSlice.reducer;
