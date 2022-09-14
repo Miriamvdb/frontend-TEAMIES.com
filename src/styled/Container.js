@@ -1,8 +1,20 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div`
+export const MainContainerCenter = styled.div`
   margin: -4rem 5rem 0 5rem;
   padding: 3rem;
+  border-radius: 25px;
+  color: "#00bfff";
+  background-image: linear-gradient(
+    170deg,
+    rgba(0, 191, 255, 0.4),
+    rgb(95, 255, 188, 0.4)
+  );
+`;
+
+export const MainContainer = styled.div`
+  margin: -4rem 5rem 0 5rem;
+  padding: 3rem 8rem;
   border-radius: 25px;
   color: "#00bfff";
   background-image: linear-gradient(

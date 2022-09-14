@@ -3,7 +3,7 @@ import {
   Input,
   TitleCenter,
   LinkWord,
-  MainContainer,
+  MainContainerCenter,
   Form,
   TextCenter,
 } from "../styled";
@@ -36,7 +36,12 @@ export const Login = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <MainContainer>
+      <MainContainerCenter
+        style={{
+          overflow: "scroll",
+          height: "61vh",
+        }}
+      >
         <TitleCenter>Login</TitleCenter>
         <Form onSubmit={submitForm}>
           <Input
@@ -50,17 +55,16 @@ export const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <br />
+          <TextCenter>
+            Don't have an account yet? Click{" "}
+            <Link to="/signup" style={LinkWord}>
+              <b>here</b>
+            </Link>{" "}
+            to sign up
+          </TextCenter>
           <ButtonForm type="submit">Login</ButtonForm>
         </Form>
-        <TextCenter>
-          Don't have an account yet? Click{" "}
-          <Link to="/signup" style={LinkWord}>
-            <b>here</b>
-          </Link>{" "}
-          to sign up
-        </TextCenter>
-      </MainContainer>
+      </MainContainerCenter>
     </div>
   );
 };

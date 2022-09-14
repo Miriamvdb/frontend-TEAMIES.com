@@ -13,3 +13,10 @@ export const Title = styled.h2`
   color: #00bfff;
   padding-bottom: 0.5rem;
 `;
+
+export const TitlePage = styled.h1`
+  text-align: left;
+  font-size: 2rem;
+  color: #00bfff;
+  padding: 2rem 0;
+`;

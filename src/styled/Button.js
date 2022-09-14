@@ -29,22 +29,43 @@ export const LogoutButton = styled.button`
   }
 `;
 
-export const PartiButtonOpen = styled.button`
-  background: none;
+export const PartiButtonOpenP = styled.button`
+  background: white;
   margin: 1.25rem 1.25rem 0 0;
-  color: white;
-  width: 6rem;
+  color: #00bfff;
+  width: 4rem;
   height: 2rem;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  border: 2px solid white;
-  transition: all 0.2s ease-in;
+  border: 2px solid #00bfff;
+  padding: 0.5rem 0 0 1rem;
   border-radius: 25px;
   cursor: pointer;
 
   &:hover {
-    text-shadow: 0 0 10px #59d6ff;
-    box-shadow: 0 0 10px #59d6ff;
+    border: 2px solid white;
+    color: white;
+    background-image: linear-gradient(165deg, #00bfff, #5fffbc);
+  }
+`;
+
+export const PartiButtonOpenA = styled.button`
+  background: white;
+  margin: 1.25rem 1.25rem 0 0;
+  color: #00bfff;
+  width: 4rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 2px solid #00bfff;
+  padding: 0.5rem 0 0 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid white;
+    color: white;
+    background-image: linear-gradient(165deg, #ff6347, #ffd500);
   }
 `;
 
@@ -52,38 +73,30 @@ export const PartiButtonPresent = styled.button`
   background-image: linear-gradient(165deg, #00bfff, #5fffbc);
   margin: 1.25rem 1.25rem 0 0;
   color: white;
-  width: 6rem;
+  width: 4rem;
   height: 2rem;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   font-weight: bold;
   border: 2px solid white;
   transition: all 0.2s ease-in;
+  padding: 0.5rem 0 0 1rem;
   border-radius: 25px;
   cursor: pointer;
-
-  &:hover {
-    text-shadow: 0 0 10px #5fffbc;
-    box-shadow: 0 0 10px #5fffbc;
-  }
 `;
 
 export const PartiButtonAbsent = styled.button`
   background-image: linear-gradient(165deg, #ff6347, #ffd500);
   margin: 1.25rem 1.25rem 0 0;
   color: white;
-  width: 6rem;
+  width: 4rem;
   height: 2rem;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   font-weight: bold;
   border: 2px solid white;
   transition: all 0.2s ease-in;
+  padding: 0.5rem 0 0 1rem;
   border-radius: 25px;
   cursor: pointer;
-
-  &:hover {
-    text-shadow: 0 0 10px #ff6347;
-    box-shadow: 0 0 10px #ff6347;
-  }
 `;
 
 export const ButtonModal = styled.button`
@@ -104,4 +117,40 @@ export const OpenDetailsButton = styled.button`
   background: none;
   border: none;
   transition: all 0.2s ease-in;
+`;
+
+export const AccUserButton = styled.button`
+  background: white;
+  color: #00bfff;
+  font-size: 1.5rem;
+  height: 2rem;
+  width: 4rem;
+  margin: 0 1rem 2rem 0rem;
+  padding: 0.25em 1em;
+  border: 2px solid #00bfff;
+  border-radius: 25px;
+
+  &:hover {
+    border: 2px solid white;
+    color: white;
+    background-image: linear-gradient(165deg, #00bfff, #5fffbc);
+  }
+`;
+
+export const DelUserButton = styled.button`
+  background: white;
+  color: #00bfff;
+  font-size: 1.5rem;
+  height: 2rem;
+  width: 4rem;
+  margin: 0 1rem 2rem 0rem;
+  padding: 0.25em 1em;
+  border: 2px solid #00bfff;
+  border-radius: 25px;
+
+  &:hover {
+    border: 2px solid white;
+    color: white;
+    background-image: linear-gradient(165deg, #ff6347, #ffd500);
+  }
 `;

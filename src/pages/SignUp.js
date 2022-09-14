@@ -3,7 +3,7 @@ import {
   Form,
   ImgM,
   Input,
-  MainContainer,
+  MainContainerCenter,
   Select,
   TitleCenter,
 } from "../styled";
@@ -54,7 +54,7 @@ export const SignUp = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <MainContainer
+      <MainContainerCenter
         style={{
           overflow: "scroll",
           height: "61vh",
@@ -220,7 +220,7 @@ export const SignUp = () => {
           <br />
           <ButtonForm type="submit">Sign Up</ButtonForm>
         </Form>
-      </MainContainer>
+      </MainContainerCenter>
     </div>
   );
 };
