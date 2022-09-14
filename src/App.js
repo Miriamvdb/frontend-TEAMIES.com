@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/thunks";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Navbar, MessageBox, Footer } from "./components";
-import { Dashboard, Login, SignUp } from "./pages";
-import { selectToken } from "./store/user/selectors";
+import { Dashboard, Login, SignUp, Admin } from "./pages";
+import { selectToken, selectUser } from "./store/user/selectors";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,9 @@ export const App = () => {
   const token = useSelector(selectToken);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const user = useSelector(selectUser);
+  const isAdmin = user ? user.isAdmin : "";
 
   useEffect(() => {
     dispatch(getUserWithStoredToken());
@@ -29,6 +32,7 @@ export const App = () => {
         <Route path="/" element={token ? <Dashboard /> : <></>} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={isAdmin ? <Admin /> : <></>} />
       </Routes>
       <Footer />
     </div>

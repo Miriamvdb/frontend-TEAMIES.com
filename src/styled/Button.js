@@ -126,7 +126,7 @@ export const AccUserButton = styled.button`
   height: 2rem;
   width: 4rem;
   margin: 0 1rem 2rem 0rem;
-  padding: 0.25em 1em;
+  padding: 0.25em 1.3rem;
   border: 2px solid #00bfff;
   border-radius: 25px;
 
@@ -144,7 +144,7 @@ export const DelUserButton = styled.button`
   height: 2rem;
   width: 4rem;
   margin: 0 1rem 2rem 0rem;
-  padding: 0.25em 1em;
+  padding: 0.25em 1.3rem;
   border: 2px solid #00bfff;
   border-radius: 25px;
 

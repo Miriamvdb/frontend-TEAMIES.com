@@ -11,6 +11,7 @@ export const Navbar = () => {
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
   const userName = user ? user.firstName : "";
+  const isAdmin = user ? user.isAdmin : "";
 
   return (
     <Nav>
@@ -30,6 +31,7 @@ export const Navbar = () => {
               paddingBottom: "0rem",
             }}
           >
+            {isAdmin ? <LinkPending to="/admin">Admin</LinkPending> : null}
             <Text>
               Welcome <b>{userName}</b>
             </Text>
@@ -56,6 +58,20 @@ const Nav = styled.div`
 
 const Link = styled(NavLink)`
   padding-right: 8.5rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #00bfff;
+  transition: all 0.2s ease-in;
+  font-size: 0.9rem;
+
+  &:hover {
+    color: #59d6ff;
+  }
+`;
+
+const LinkPending = styled(NavLink)`
+  padding-right: 1rem;
   cursor: pointer;
   text-align: center;
   text-decoration: none;

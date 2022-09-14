@@ -17,6 +17,9 @@ export const Team = () => {
   const dispatch = useDispatch();
   const allPlayers = useSelector(selectAllPlayers);
 
+  // F11: Filter all the players that are already accepted by admin
+  const acceptedPlayers = allPlayers.filter((player) => player.accepted);
+
   // Modal
   const [open, setOpen] = useState(false);
 
@@ -70,8 +73,8 @@ export const Team = () => {
           height: "20vh",
         }}
       >
-        {allPlayers ? (
-          allPlayers.map((player, index) => {
+        {acceptedPlayers ? (
+          acceptedPlayers.map((player, index) => {
             return (
               <div key={index}>
                 <PlayerCard

@@ -1,8 +1,9 @@
 import {
   OpenDetailsButton,
   PartiButtonAbsent,
-  PartiButtonOpen,
+  PartiButtonOpenA,
   PartiButtonPresent,
+  PartiButtonOpenP,
   Text,
   TextXs,
   ButtonModal,
@@ -15,6 +16,7 @@ import { updateParticipation } from "../store/event/thunks";
 import { IoClose } from "react-icons/io5";
 import { EventDetails } from "./";
 import { Roller } from "react-awesome-spinners";
+import { FiCheckSquare, FiXSquare } from "react-icons/fi";
 
 // Modal
 import { Dialog } from "@reach/dialog";
@@ -42,7 +44,9 @@ export const AllEventsCard = ({
     dispatch(updateParticipation(eventId, participation)); // event id from props
   };
 
-  if (!allPlayers) return <Roller />;
+  // F11: Filter all the players that are already accepted by admin
+  const acceptedPlayers = allPlayers.filter((player) => player.accepted);
+  if (!acceptedPlayers) return <Roller />;
 
   // F5: Amount of (updated) attendees
   const presentAttendees = attendees?.filter(
@@ -73,7 +77,7 @@ export const AllEventsCard = ({
           </Text>
           <TextXs>
             {startTime?.slice(0, 5)} - {endTime?.slice(0, 5)} | Attendees{" "}
-            {presentAttendees} / {allPlayers.length}
+            {presentAttendees} / {acceptedPlayers.length}
           </TextXs>
         </div>
       </OpenDetailsButton>
@@ -109,13 +113,13 @@ export const AllEventsCard = ({
       >
         {participation === "open" ? (
           <>
-            <PartiButtonOpen onClick={() => handleUpdateParti(true)}>
-              Present
-            </PartiButtonOpen>
+            <PartiButtonOpenP onClick={() => handleUpdateParti(true)}>
+              <FiCheckSquare />
+            </PartiButtonOpenP>
 
-            <PartiButtonOpen onClick={() => handleUpdateParti(false)}>
-              Absent
-            </PartiButtonOpen>
+            <PartiButtonOpenA onClick={() => handleUpdateParti(false)}>
+              <FiXSquare />
+            </PartiButtonOpenA>
           </>
         ) : (
           <></>
@@ -123,11 +127,11 @@ export const AllEventsCard = ({
 
         {participation === "absent" ? (
           <>
-            <PartiButtonOpen onClick={() => handleUpdateParti(true)}>
-              Present
-            </PartiButtonOpen>
+            <PartiButtonOpenP onClick={() => handleUpdateParti(true)}>
+              <FiCheckSquare />
+            </PartiButtonOpenP>
             <PartiButtonAbsent onClick={() => handleUpdateParti(false)}>
-              Absent
+              <FiXSquare />
             </PartiButtonAbsent>
           </>
         ) : (
@@ -137,12 +141,12 @@ export const AllEventsCard = ({
         {participation === "present" ? (
           <>
             <PartiButtonPresent onClick={() => handleUpdateParti(true)}>
-              Present
+              <FiCheckSquare />
             </PartiButtonPresent>
 
-            <PartiButtonOpen onClick={() => handleUpdateParti(false)}>
-              Absent
-            </PartiButtonOpen>
+            <PartiButtonOpenA onClick={() => handleUpdateParti(false)}>
+              <FiXSquare />
+            </PartiButtonOpenA>
           </>
         ) : (
           <></>

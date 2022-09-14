@@ -10,6 +10,9 @@ export const TeamMod = () => {
   const dispatch = useDispatch();
   const allPlayers = useSelector(selectAllPlayers);
 
+  // F11: Filter all the players that are accepted by admin
+  const playersToAccept = allPlayers.filter((player) => player.accepted);
+
   useEffect(() => {
     dispatch(fetchAllPlayers());
   }, [dispatch]);
@@ -28,8 +31,8 @@ export const TeamMod = () => {
           justifyContent: "center",
         }}
       >
-        {allPlayers ? (
-          allPlayers.map((player, index) => {
+        {playersToAccept ? (
+          playersToAccept.map((player, index) => {
             return (
               <div key={index}>
                 <PlayerCard

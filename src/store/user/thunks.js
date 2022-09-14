@@ -30,10 +30,10 @@ export const signUp = (
         image,
       });
 
+      // F11: User can't login yet when is pending for accept by admin (message tells the user)
       dispatch(
-        loginSuccess({ token: response.data.token, user: response.data.user })
+        showMessageWithTimeout("success", true, response.data.message, 10000)
       );
-      dispatch(showMessageWithTimeout("success", true, "account created"));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -73,7 +73,7 @@ export const login = (email, password) => {
       dispatch(
         loginSuccess({ token: response.data.token, user: response.data.user })
       );
-      // dispatch(showMessageWithTimeout("success", false, "Welcome back!", 1500));
+      dispatch(showMessageWithTimeout("success", true, "Welcome back!", 3000));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

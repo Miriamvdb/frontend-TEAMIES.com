@@ -11,3 +11,4 @@ export * from "./NewEventForm";
 export * from "./TeamMod";
 export * from "./AllEventsMod";
 export * from "./EventDetails";
+export * from "./PendingUser";
