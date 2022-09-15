@@ -7,3 +7,4 @@ export * from "./Form";
 export * from "./Text";
 export * from "./Image";
 export * from "./Label";
+export * from "./Notification";

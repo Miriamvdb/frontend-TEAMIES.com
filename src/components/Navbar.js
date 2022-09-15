@@ -3,15 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectToken, selectUser } from "../store/user/selectors";
 import { logOut } from "../store/user/slice";
 import { NavLink } from "react-router-dom";
-import { LogoutButton, Text } from "../styled";
+import { LogoutButton, Notification, Text } from "../styled";
+import { selectAllPlayers } from "../store/player/selectors";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
 
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
+  const allPlayers = useSelector(selectAllPlayers);
   const userName = user ? user.firstName : "";
   const isAdmin = user ? user.isAdmin : "";
+
+  // F11: Filter all the pending players (accepted === false)
+  const playersToAccept = allPlayers.filter((player) => !player.accepted);
 
   return (
     <Nav>
@@ -31,7 +36,17 @@ export const Navbar = () => {
               paddingBottom: "0rem",
             }}
           >
-            {isAdmin ? <LinkPending to="/admin">Admin</LinkPending> : null}
+            {isAdmin ? (
+              <LinkPending to="/admin">
+                Admin
+                {playersToAccept.length === 0 ? (
+                  ""
+                ) : (
+                  <Notification>{playersToAccept.length}</Notification>
+                )}
+              </LinkPending>
+            ) : null}
+
             <Text>
               Welcome <b>{userName}</b>
             </Text>
