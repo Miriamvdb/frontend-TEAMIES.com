@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectUser } from "../store/user/selectors";
-import { SubContainer, Text, Title } from "../styled";
+import { SubContainer, Text, TitleH2 } from "../styled";
 import { Roller } from "react-awesome-spinners";
 import { MyScheduleCard } from "./MyScheduleCard";
 import { CgSmileMouthOpen } from "react-icons/cg";
@@ -10,7 +10,7 @@ export const MySchedule = () => {
 
   return (
     <SubContainer style={{ flex: 1 }}>
-      <Title>My schedule </Title>
+      <TitleH2>My schedule </TitleH2>
       <div
         style={{
           overflow: "scroll",
@@ -23,9 +23,9 @@ export const MySchedule = () => {
               <Text>Come on, get off that lazy ass!</Text>
               <Text>The trainer will be very disapointed...</Text>
               <Text>You like it to be a substitute?</Text>
-              <Title>
+              <TitleH2>
                 <CgSmileMouthOpen />
-              </Title>
+              </TitleH2>
             </>
           ) : (
             me.mySchedule?.map((mS, index) => {

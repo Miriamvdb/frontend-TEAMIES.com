@@ -3,9 +3,9 @@ import {
   Form,
   ImgM,
   Input,
-  MainContainerCenter,
+  MainContainer,
   Select,
-  TitleCenter,
+  TitleH1,
 } from "../styled";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,30 +54,21 @@ export const SignUp = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <MainContainerCenter
+      <MainContainer
         style={{
           overflow: "scroll",
           height: "61vh",
         }}
       >
-        <TitleCenter>Sign Up</TitleCenter>
-        <Form
-          onSubmit={submitForm}
-          style={{ display: "flex", flexDirection: "column" }}
-        >
+        <TitleH1>Sign up</TitleH1>
+        <Form onSubmit={submitForm}>
           <Input
-            style={{
-              flex: 1,
-            }}
             placeholder="First name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
           <Input
-            style={{
-              flex: 2,
-            }}
             placeholder="Last name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -96,17 +87,8 @@ export const SignUp = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: "1.25rem",
-            }}
-          >
+          <div>
             <Select
-              style={{
-                flex: 3,
-              }}
               type="select"
               value={line}
               onChange={(e) => setLine(e.target.value)}
@@ -122,7 +104,7 @@ export const SignUp = () => {
             {line === "Staff" ? (
               <Select
                 style={{
-                  flex: 3,
+                  width: "12rem",
                 }}
                 type="select"
                 value={position}
@@ -199,9 +181,9 @@ export const SignUp = () => {
 
             <Input
               style={{
-                flex: 0.5,
+                width: "3rem",
               }}
-              type="text"
+              type="number"
               placeholder="#"
               value={backNumber}
               onChange={(e) => parseInt(setBackNumber(e.target.value))}
@@ -218,9 +200,9 @@ export const SignUp = () => {
             <ImgM src={image} alt={firstName} style={{ marginTop: "2rem" }} />
           ) : null}
           <br />
-          <ButtonForm type="submit">Sign Up</ButtonForm>
+          <ButtonForm type="submit">Sign up</ButtonForm>
         </Form>
-      </MainContainerCenter>
+      </MainContainer>
     </div>
   );
 };

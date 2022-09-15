@@ -7,10 +7,9 @@ import {
   ButtonForm,
   Form,
   Input,
-  InputXs,
   Label,
   Select,
-  TitleCenter,
+  TitleH1,
   ModalContainer,
 } from "../styled";
 import { Roller } from "react-awesome-spinners";
@@ -40,17 +39,21 @@ export const NewEventForm = () => {
         type: "text",
       },
       {
-        placeholder: "Home",
+        style: {
+          display: "flex",
+          width: "1rem",
+          marginTop: "0rem",
+        },
         onChange: () => setHome(!home),
         value: !!home,
         type: "checkbox",
-        label: "Home",
+        label: "Home match?",
       },
     ],
     // Party
     3: [
       {
-        placeholder: "More info about this party.. ",
+        placeholder: "Additional info",
         onChange: (e) => setDescr(e.target.value),
         value: descr,
         type: "text",
@@ -88,9 +91,10 @@ export const NewEventForm = () => {
 
   return (
     <ModalContainer>
-      <TitleCenter>Create New Event</TitleCenter>
+      <TitleH1>Create New Event</TitleH1>
       <Form onSubmit={submitForm}>
         <Select
+          style={{ marginBottom: "0.5rem" }}
           value={categoryId}
           onChange={(e) => setCategoryId(e.target.value)}
           required
@@ -113,44 +117,52 @@ export const NewEventForm = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <Input
+          type="date"
+          placeholder="Date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
         <div
           style={{
             display: "flex",
             flexDirection: "row",
-            gap: "1.25rem",
           }}
         >
-          <Label>Date </Label>
-          <InputXs
-            type="date"
-            placeholder="Date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-          <Label>Start </Label>
-          <InputXs
-            type="time"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
-          />
-          <Label>End </Label>
-          <InputXs
-            type="time"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
-          />
-        </div>
-
-        {extraFields[categoryId]?.map((field, index) => (
           <div
             style={{
               display: "flex",
-              width: "100%",
               flexDirection: "column",
-              alignItems: "center",
+              gap: "0.25rem",
+              width: "8rem",
             }}
-            key={index}
           >
+            <Label>Start </Label>
+            <Input
+              type="time"
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.25rem",
+              width: "8rem",
+            }}
+          >
+            <Label>End </Label>
+            <Input
+              type="time"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+            />
+          </div>
+        </div>
+
+        {extraFields[categoryId]?.map((field, index) => (
+          <div key={index}>
             {field.label && <Label>{field.label}</Label>}
             <Input
               key={index}
@@ -158,12 +170,13 @@ export const NewEventForm = () => {
               value={field.value}
               onChange={field.onChange}
               type={field.type}
+              style={field.style || {}}
             />
           </div>
         ))}
 
         <br />
-        <ButtonForm type="submit">Create new event</ButtonForm>
+        <ButtonForm type="submit">Create event</ButtonForm>
       </Form>
     </ModalContainer>
   );

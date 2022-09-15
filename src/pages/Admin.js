@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllPlayers } from "../store/player/selectors";
 import { fetchAllPlayers } from "../store/player/thunks";
-import { MainContainer, Text, TitlePage } from "../styled";
+import { MainContainer, Text, TitleH1 } from "../styled";
 import { Roller } from "react-awesome-spinners";
 import { PendingUser } from "../components/PendingUser";
 
@@ -24,7 +24,7 @@ export const Admin = () => {
         height: "61vh",
       }}
     >
-      <TitlePage>New pending users</TitlePage>
+      <TitleH1>New pending users</TitleH1>
       {playersToAccept ? (
         playersToAccept.length === 0 ? (
           <>

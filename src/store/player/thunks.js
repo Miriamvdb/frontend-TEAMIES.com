@@ -31,8 +31,6 @@ export const acceptNewPlayer =
         }
       );
 
-      console.log("Response acceptNewPlayer", patchResponse);
-
       // Prevent refreshing the page for working participation-buttons
       const response = await axios.get(`${apiUrl}/players`);
       dispatch(setAllPlayers(response.data));
@@ -59,8 +57,6 @@ export const deleteNewPlayer = (playerId) => async (dispatch, getState) => {
         Authorization: `Bearer ${token}`,
       },
     });
-
-    console.log("Response deleteNewPlayer", deleteResponse);
 
     // Prevent refreshing the page for working participation-buttons
     const response = await axios.get(`${apiUrl}/players`);

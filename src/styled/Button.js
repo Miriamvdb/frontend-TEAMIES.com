@@ -5,7 +5,8 @@ export const ButtonForm = styled.button`
   color: ${(props) => (props.primary ? "white" : "#00bfff")};
   font-size: 0.9rem;
   height: 2rem;
-  margin: 1em;
+  width: 8rem;
+  margin: 1rem 0;
   padding: 0.25em 1em;
   border: 2px solid #00bfff;
   border-radius: 25px;

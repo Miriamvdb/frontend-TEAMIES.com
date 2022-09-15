@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllPlayers } from "../store/player/selectors";
 import { fetchAllPlayers } from "../store/player/thunks";
-import { ButtonModal, SubContainer, Title } from "../styled";
+import { ButtonModal, SubContainer, TitleH2 } from "../styled";
 import { PlayerCard } from "./PlayerCard";
 import { CgPlayListSearch } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
@@ -36,7 +36,7 @@ export const Team = () => {
           justifyContent: "space-between",
         }}
       >
-        <Title>Team</Title>
+        <TitleH2>Team</TitleH2>
         <ButtonModal onClick={() => setOpen(!open)}>
           <CgPlayListSearch />
         </ButtonModal>

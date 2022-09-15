@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectAllEvents } from "../store/event/selectors";
 import { fetchAllEvents } from "../store/event/thunks";
 import { selectUser } from "../store/user/selectors";
-import { ButtonModal, SubContainer, Title } from "../styled";
+import { ButtonModal, SubContainer, TitleH2 } from "../styled";
 import { AllEventsCard, AllEventsMod, NewEventForm } from "./";
 import { CgPlayListSearch, CgPlayListAdd } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
@@ -52,7 +52,7 @@ export const AllEvents = () => {
           alignItems: "center",
         }}
       >
-        <Title>All events</Title>
+        <TitleH2>All events</TitleH2>
         <div>
           {isAdmin ? (
             <>

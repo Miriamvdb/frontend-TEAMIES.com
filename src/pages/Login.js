@@ -1,11 +1,11 @@
 import {
   ButtonForm,
   Input,
-  TitleCenter,
+  TitleH1,
   LinkWord,
-  MainContainerCenter,
+  MainContainer,
   Form,
-  TextCenter,
+  Text,
 } from "../styled";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -36,13 +36,13 @@ export const Login = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <MainContainerCenter
+      <MainContainer
         style={{
           overflow: "scroll",
           height: "61vh",
         }}
       >
-        <TitleCenter>Login</TitleCenter>
+        <TitleH1>Login</TitleH1>
         <Form onSubmit={submitForm}>
           <Input
             placeholder="Email"
@@ -55,16 +55,16 @@ export const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <TextCenter>
+          <Text>
             Don't have an account yet? Click{" "}
             <Link to="/signup" style={LinkWord}>
               <b>here</b>
             </Link>{" "}
             to sign up
-          </TextCenter>
+          </Text>
           <ButtonForm type="submit">Login</ButtonForm>
         </Form>
-      </MainContainerCenter>
+      </MainContainer>
     </div>
   );
 };
