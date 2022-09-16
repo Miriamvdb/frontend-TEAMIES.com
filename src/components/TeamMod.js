@@ -2,16 +2,18 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllPlayers } from "../store/player/selectors";
 import { fetchAllPlayers } from "../store/player/thunks";
-import { ModalContainer } from "../styled";
+import { ModalContainer, TitleH2 } from "../styled";
 import { PlayerCard } from "./PlayerCard";
 import { Roller } from "react-awesome-spinners";
+import { selectTeam } from "../store/team/selectors";
 
 export const TeamMod = () => {
   const dispatch = useDispatch();
   const allPlayers = useSelector(selectAllPlayers);
+  const myTeam = useSelector(selectTeam);
 
   // F11: Filter all the players that are accepted by admin
-  const playersToAccept = allPlayers.filter((player) => player.accepted);
+  const allPlayersAccepted = allPlayers.filter((player) => player.accepted);
 
   useEffect(() => {
     dispatch(fetchAllPlayers());
@@ -19,6 +21,7 @@ export const TeamMod = () => {
 
   return (
     <ModalContainer>
+      <TitleH2>{myTeam} team</TitleH2>
       <div
         style={{
           display: "flex",
@@ -31,8 +34,8 @@ export const TeamMod = () => {
           justifyContent: "center",
         }}
       >
-        {playersToAccept ? (
-          playersToAccept.map((player, index) => {
+        {allPlayersAccepted ? (
+          allPlayersAccepted.map((player, index) => {
             return (
               <div key={index}>
                 <PlayerCard

@@ -12,6 +12,7 @@ import { Roller } from "react-awesome-spinners";
 // Modal
 import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
+import { fetchTeam } from "../store/team/thunks";
 
 export const AllEvents = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export const AllEvents = () => {
 
   useEffect(() => {
     dispatch(fetchAllEvents());
+    dispatch(fetchTeam());
   }, [dispatch]);
 
   const getEventParticipation = (eventId, participations) => {

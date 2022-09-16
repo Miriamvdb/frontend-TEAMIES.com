@@ -17,6 +17,7 @@ import { IoClose } from "react-icons/io5";
 import { EventDetails } from "./";
 import { Roller } from "react-awesome-spinners";
 import { FiCheckSquare, FiXSquare } from "react-icons/fi";
+import { selectTeam } from "../store/team/selectors";
 
 // Modal
 import { Dialog } from "@reach/dialog";
@@ -35,6 +36,7 @@ export const AllEventsCard = ({
 }) => {
   const dispatch = useDispatch();
   const allPlayers = useSelector(selectAllPlayers);
+  const myTeam = useSelector(selectTeam);
 
   // Modal
   const [open, setOpen] = useState(false);
@@ -70,8 +72,8 @@ export const AllEventsCard = ({
             <b>
               {title === "Match"
                 ? home
-                  ? `EDO VR1 - ${opponent}`
-                  : `${opponent} - EDO VR1`
+                  ? `${myTeam} - ${opponent}`
+                  : `${opponent} - ${myTeam}`
                 : title}
             </b>
           </Text>

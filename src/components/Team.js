@@ -12,10 +12,12 @@ import { Roller } from "react-awesome-spinners";
 import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
 import { TeamMod } from "./TeamMod";
+import { selectTeam } from "../store/team/selectors";
 
 export const Team = () => {
   const dispatch = useDispatch();
   const allPlayers = useSelector(selectAllPlayers);
+  const myTeam = useSelector(selectTeam);
 
   // F11: Filter all the players that are already accepted by admin
   const acceptedPlayers = allPlayers.filter((player) => player.accepted);
@@ -36,7 +38,7 @@ export const Team = () => {
           justifyContent: "space-between",
         }}
       >
-        <TitleH2>Team</TitleH2>
+        <TitleH2>{myTeam} team</TitleH2>
         <ButtonModal onClick={() => setOpen(!open)}>
           <CgPlayListSearch />
         </ButtonModal>

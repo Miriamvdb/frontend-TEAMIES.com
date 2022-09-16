@@ -1,5 +1,7 @@
 import { Text, TextXs } from "../styled";
 import moment from "moment";
+import { useSelector } from "react-redux";
+import { selectTeam } from "../store/team/selectors";
 
 export const MyScheduleCard = ({
   date,
@@ -9,6 +11,8 @@ export const MyScheduleCard = ({
   startTime,
   endTime,
 }) => {
+  const myTeam = useSelector(selectTeam);
+
   return (
     <div
       style={{
@@ -21,8 +25,8 @@ export const MyScheduleCard = ({
         <b>
           {title === "Match"
             ? home
-              ? `EDO VR1 - ${opponent}`
-              : `${opponent} - EDO VR1`
+              ? `${myTeam} - ${opponent}`
+              : `${opponent} - ${myTeam}`
             : title}
         </b>
       </Text>

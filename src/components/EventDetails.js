@@ -5,10 +5,12 @@ import { fetchEventDetails } from "../store/event/thunks";
 import { ModalContainerXS, Text, TextLH, TextList, TitleH2 } from "../styled";
 import moment from "moment";
 import { Roller } from "react-awesome-spinners";
+import { selectTeam } from "../store/team/selectors";
 
 export const EventDetails = ({ eventId }) => {
   const dispatch = useDispatch();
   const eventDetails = useSelector(selectEventDetails);
+  const myTeam = useSelector(selectTeam);
 
   useEffect(() => {
     dispatch(fetchEventDetails(eventId));
@@ -33,8 +35,8 @@ export const EventDetails = ({ eventId }) => {
       <TitleH2>
         {title === "Match"
           ? home
-            ? `EDO VR1 - ${opponent}`
-            : `${opponent} - EDO VR1`
+            ? `${myTeam} - ${opponent}`
+            : `${opponent} - ${myTeam}`
           : title}
       </TitleH2>
       <TextLH>{descr === null ? "" : `${descr}`}</TextLH>
