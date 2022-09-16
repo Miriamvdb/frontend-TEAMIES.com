@@ -50,6 +50,7 @@ export const SignUp = () => {
         image
       )
     );
+    navigate("/signupsuccess");
   };
 
   return (

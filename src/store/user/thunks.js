@@ -30,10 +30,6 @@ export const signUp = (
         image,
       });
 
-      // F11: User can't login yet when is pending for accept by admin (message tells the user)
-      dispatch(
-        showMessageWithTimeout("success", true, response.data.message, 10000)
-      );
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
