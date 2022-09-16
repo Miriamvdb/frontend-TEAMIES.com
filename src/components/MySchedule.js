@@ -1,12 +1,11 @@
 import { useSelector } from "react-redux";
-import { selectUser } from "../store/user/selectors";
+import { selectMySchedule } from "../store/user/selectors";
 import { SubContainer, Text, TitleH2 } from "../styled";
 import { Roller } from "react-awesome-spinners";
 import { MyScheduleCard } from "./MyScheduleCard";
-import { CgSmileMouthOpen } from "react-icons/cg";
 
 export const MySchedule = () => {
-  const me = useSelector(selectUser);
+  const mySchedule = useSelector(selectMySchedule);
 
   return (
     <SubContainer style={{ flex: 1 }}>
@@ -17,18 +16,15 @@ export const MySchedule = () => {
           height: "24vh",
         }}
       >
-        {me ? (
-          me.mySchedule?.length === 0 ? (
+        {mySchedule ? (
+          mySchedule.length === 0 ? (
             <>
               <Text>Come on, get off that lazy ass!</Text>
               <Text>The trainer will be very disapointed...</Text>
               <Text>You like it to be a substitute?</Text>
-              <TitleH2>
-                <CgSmileMouthOpen />
-              </TitleH2>
             </>
           ) : (
-            me.mySchedule?.map((mS, index) => {
+            mySchedule.map((mS, index) => {
               return (
                 <div key={index}>
                   <MyScheduleCard
