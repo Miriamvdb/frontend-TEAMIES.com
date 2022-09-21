@@ -48,7 +48,8 @@ export const acceptNewPlayer =
   };
 
 // F11: As an admin, I can DELETE new registrations, to prevent that everybody can join our team
-export const deleteNewPlayer = (playerId) => async (dispatch, getState) => {
+// F13: Admin can delete existing player
+export const deletePlayer = (playerId) => async (dispatch, getState) => {
   try {
     const { token } = getState().user;
 
@@ -62,12 +63,7 @@ export const deleteNewPlayer = (playerId) => async (dispatch, getState) => {
     const response = await axios.get(`${apiUrl}/players`);
     dispatch(setAllPlayers(response.data));
     dispatch(
-      showMessageWithTimeout(
-        "success",
-        false,
-        "Players sign up is deleted!",
-        3000
-      )
+      showMessageWithTimeout("success", false, "Player is deleted!", 3000)
     );
   } catch (e) {
     console.log(e.message);
