@@ -114,6 +114,9 @@ export const ButtonModal = styled.button`
 `;
 
 export const OpenDetailsButton = styled.button`
+  margin-top: -1rem;
+  margin-bottom: -0.85rem;
+  margin-left: -0.35rem;
   cursor: pointer;
   background: none;
   border: none;
@@ -153,5 +156,19 @@ export const DelUserButton = styled.button`
     border: 2px solid white;
     color: white;
     background-image: linear-gradient(165deg, #ff6347, #ffd500);
+  }
+`;
+
+export const EventButton = styled.button`
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #00bfff;
+  opacity: 0%;
+  font-size: 1.5rem;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    opacity: 100%;
   }
 `;

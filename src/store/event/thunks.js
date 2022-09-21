@@ -94,3 +94,29 @@ export const fetchEventDetails = (id) => async (dispatch, getState) => {
     console.log(e.message);
   }
 };
+
+// F12: Admin can delete events
+export const deleteEvent = (eventId) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().user;
+
+    const deleteResponse = await axios.delete(`${apiUrl}/events/${eventId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    // Prevent refreshing the page for working participation-buttons
+    const response = await axios.get(`${apiUrl}/events`);
+    const response2 = await axios.get(`${apiUrl}/auth/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    dispatch(setAllEvents(response.data));
+    dispatch(tokenStillValid({ user: response2.data }));
+    dispatch(
+      showMessageWithTimeout("success", false, "Event is deleted!", 3000)
+    );
+  } catch (e) {
+    console.log(e.message);
+  }
+};

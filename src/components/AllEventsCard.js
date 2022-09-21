@@ -7,17 +7,20 @@ import {
   Text,
   TextXs,
   ButtonModal,
+  EventButton,
 } from "../styled";
 import moment from "moment";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllPlayers } from "../store/player/selectors";
-import { updateParticipation } from "../store/event/thunks";
+import { deleteEvent, updateParticipation } from "../store/event/thunks";
 import { IoClose } from "react-icons/io5";
 import { EventDetails } from "./";
 import { Roller } from "react-awesome-spinners";
 import { FiCheckSquare, FiXSquare } from "react-icons/fi";
 import { selectTeam } from "../store/team/selectors";
+import { selectUser } from "../store/user/selectors";
+// import { MdEditNote } from "react-icons/md";
 
 // Modal
 import { Dialog } from "@reach/dialog";
@@ -37,6 +40,8 @@ export const AllEventsCard = ({
   const dispatch = useDispatch();
   const allPlayers = useSelector(selectAllPlayers);
   const myTeam = useSelector(selectTeam);
+  const user = useSelector(selectUser);
+  const isAdmin = user ? user.isAdmin : false;
 
   // Modal
   const [open, setOpen] = useState(false);
@@ -55,6 +60,11 @@ export const AllEventsCard = ({
     (a) => a.participating?.participation
   ).length;
 
+  // F12: Admin can delete event
+  const handleDeleteEvent = () => {
+    dispatch(deleteEvent(eventId));
+  };
+
   return (
     <div
       style={{
@@ -65,9 +75,26 @@ export const AllEventsCard = ({
         padding: "0 0 0.5rem 0",
       }}
     >
-      <OpenDetailsButton onClick={() => setOpen(!open)}>
-        <div>
+      <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
           <Text>{moment(date).format("ddd, MMM Do YYYY")}</Text>
+          {isAdmin ? (
+            <div style={{ position: "relative", top: "0.65rem" }}>
+              <EventButton onClick={() => handleDeleteEvent(eventId)}>
+                <IoClose style={{ color: "tomato", marginLeft: "1rem" }} />
+              </EventButton>
+              {/* <EventButton>
+                <MdEditNote />
+              </EventButton> */}
+            </div>
+          ) : null}
+        </div>
+        <OpenDetailsButton onClick={() => setOpen(!open)}>
           <Text>
             <b>
               {title === "Match"
@@ -77,12 +104,12 @@ export const AllEventsCard = ({
                 : title}
             </b>
           </Text>
-          <TextXs>
-            {startTime?.slice(0, 5)} - {endTime?.slice(0, 5)} | Attendees{" "}
-            {presentAttendees} / {acceptedPlayers.length}
-          </TextXs>
-        </div>
-      </OpenDetailsButton>
+        </OpenDetailsButton>
+        <TextXs>
+          {startTime?.slice(0, 5)} - {endTime?.slice(0, 5)} | Attendees{" "}
+          {presentAttendees} / {acceptedPlayers.length}
+        </TextXs>
+      </div>
       <Dialog
         aria-label="EventDetails"
         isOpen={open}
