@@ -58,19 +58,23 @@ export const EventDetails = ({ eventId }) => {
             <Text key={index}>{a.firstName}</Text>
           ))}
         </TextList>
-        <TextList>
-          Drivers |{" "}
-          {driverAttendees.length === 0 ? (
-            <Text>
-              <em>No drivers yet...</em>
-            </Text>
-          ) : (
-            driverAttendees.length
-          )}
-          {driverAttendees.map((a, index) => (
-            <Text key={index}>{a.firstName}</Text>
-          ))}
-        </TextList>
+        {title === "Match" ? (
+          home ? null : (
+            <TextList>
+              Drivers |{" "}
+              {driverAttendees.length === 0 ? (
+                <Text>
+                  <em>No drivers yet...</em>
+                </Text>
+              ) : (
+                driverAttendees.length
+              )}
+              {driverAttendees.map((a, index) => (
+                <Text key={index}>{a.firstName}</Text>
+              ))}
+            </TextList>
+          )
+        ) : null}
       </div>
     </ModalContainerXS>
   );
