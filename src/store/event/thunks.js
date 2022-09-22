@@ -6,7 +6,7 @@ import {
   setEventDetails,
   updateAttendeesForEvent,
 } from "./slice";
-import { tokenStillValid } from "../user/slice";
+import { tokenStillValid, toggleIsDriver } from "../user/slice";
 import { showMessageWithTimeout } from "../appState/thunks";
 
 // F2: GET all events incl. corresponding category
@@ -120,3 +120,27 @@ export const deleteEvent = (eventId) => async (dispatch, getState) => {
     console.log(e.message);
   }
 };
+
+// F14: Driver or not
+export const updateDriver =
+  (eventId, isDriver) => async (dispatch, getState) => {
+    try {
+      const { token } = getState().user;
+
+      const patchResponse = await axios.patch(
+        `${apiUrl}/events/${eventId}/drivers`,
+        {
+          isDriver,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch(toggleIsDriver(eventId));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };

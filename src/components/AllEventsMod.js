@@ -16,6 +16,7 @@ export const AllEventsMod = () => {
     dispatch(fetchAllEvents());
   }, [dispatch]);
 
+  // F5 User can specify participation
   const getEventParticipation = (eventId, participations) => {
     const participationsForThisEvent = participations?.find(
       (participation) => participation.eventId === eventId
@@ -28,6 +29,16 @@ export const AllEventsMod = () => {
       } else {
         return "absent";
       }
+    }
+  };
+
+  // F14 Driver or not
+  const getEventDrivers = (eventId, participation) => {
+    const driverForThisEvent = participation?.find(
+      (driver) => driver.eventId === eventId
+    );
+    if (driverForThisEvent?.isDriver) {
+      return "driver";
     }
   };
 
@@ -57,6 +68,7 @@ export const AllEventsMod = () => {
                     event.id,
                     user.myParticipation
                   )}
+                  drivers={getEventDrivers(event.id, user.myParticipation)}
                 />
               </div>
             );

@@ -22,9 +22,18 @@ export const userSlice = createSlice({
     tokenStillValid: (state, action) => {
       state.profile = action.payload.user;
     },
+
+    // F14: Driver or not
+    toggleIsDriver: (state, action) => {
+      const eventId = action.payload;
+      state.profile.myParticipation = state.profile.myParticipation.map((p) =>
+        p.eventId === eventId ? { ...p, isDriver: !p.isDriver } : p
+      );
+    },
   },
 });
 
-export const { loginSuccess, logOut, tokenStillValid } = userSlice.actions;
+export const { loginSuccess, logOut, tokenStillValid, toggleIsDriver } =
+  userSlice.actions;
 
 export default userSlice.reducer;

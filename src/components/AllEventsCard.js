@@ -13,14 +13,18 @@ import moment from "moment";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllPlayers } from "../store/player/selectors";
-import { deleteEvent, updateParticipation } from "../store/event/thunks";
+import {
+  deleteEvent,
+  updateDriver,
+  updateParticipation,
+} from "../store/event/thunks";
 import { IoClose } from "react-icons/io5";
 import { EventDetails } from "./";
 import { Roller } from "react-awesome-spinners";
 import { FiCheckSquare, FiXSquare } from "react-icons/fi";
+import { TbCar, TbCarOff } from "react-icons/tb";
 import { selectTeam } from "../store/team/selectors";
 import { selectUser } from "../store/user/selectors";
-// import { MdEditNote } from "react-icons/md";
 
 // Modal
 import { Dialog } from "@reach/dialog";
@@ -36,6 +40,7 @@ export const AllEventsCard = ({
   endTime,
   attendees,
   participation,
+  drivers,
 }) => {
   const dispatch = useDispatch();
   const allPlayers = useSelector(selectAllPlayers);
@@ -65,6 +70,11 @@ export const AllEventsCard = ({
     dispatch(deleteEvent(eventId));
   };
 
+  // F14: Driver or not
+  const handleUpdateDriver = (isDriver) => {
+    dispatch(updateDriver(eventId, isDriver)); // event id from props
+  };
+
   return (
     <div
       style={{
@@ -88,9 +98,6 @@ export const AllEventsCard = ({
               <EventButton onClick={() => handleDeleteEvent(eventId)}>
                 <IoClose style={{ color: "tomato", marginLeft: "1rem" }} />
               </EventButton>
-              {/* <EventButton>
-                <MdEditNote />
-              </EventButton> */}
             </div>
           ) : null}
         </div>
@@ -140,6 +147,39 @@ export const AllEventsCard = ({
           flexDirection: "row",
         }}
       >
+        {/* F14: User can specify if driver or not - option visible for away matches */}
+        {title === "Match" ? (
+          home ? null : (
+            <>
+              {drivers !== "driver" ? (
+                <PartiButtonOpenP>
+                  <TbCarOff
+                    onClick={() => handleUpdateDriver(true)}
+                    style={{
+                      fontSize: "1.5rem",
+                      position: "relative",
+                      left: "-0.45rem",
+                      top: "-0.35rem",
+                    }}
+                  />
+                </PartiButtonOpenP>
+              ) : (
+                <PartiButtonPresent>
+                  <TbCar
+                    onClick={() => handleUpdateDriver(false)}
+                    style={{
+                      fontSize: "1.5rem",
+                      position: "relative",
+                      left: "-0.45rem",
+                      top: "-0.35rem",
+                    }}
+                  />
+                </PartiButtonPresent>
+              )}
+            </>
+          )
+        ) : null}
+
         {participation === "open" ? (
           <>
             <PartiButtonOpenP onClick={() => handleUpdateParti(true)}>
