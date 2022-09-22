@@ -26,6 +26,9 @@ export const EventDetails = ({ eventId }) => {
     (a) => a.participating?.participation
   );
 
+  // Array present attendees
+  const driverAttendees = attendees?.filter((a) => a.participating?.isDriver);
+
   return (
     <ModalContainerXS style={{ height: "100%" }}>
       <Text>
@@ -41,19 +44,34 @@ export const EventDetails = ({ eventId }) => {
       </TitleH2>
       <TextLH>{descr === null ? "" : `${descr}`}</TextLH>
       <br />
-      <TextList>
-        Attendees |{" "}
-        {presentAttendees.length === 0 ? (
-          <Text>
-            <em>No attendees yet...</em>
-          </Text>
-        ) : (
-          presentAttendees.length
-        )}
-        {presentAttendees.map((a, index) => (
-          <Text key={index}>{a.firstName}</Text>
-        ))}
-      </TextList>
+      <div style={{ display: "flex", gap: "3rem" }}>
+        <TextList>
+          Attendees |{" "}
+          {presentAttendees.length === 0 ? (
+            <Text>
+              <em>No attendees yet...</em>
+            </Text>
+          ) : (
+            presentAttendees.length
+          )}
+          {presentAttendees.map((a, index) => (
+            <Text key={index}>{a.firstName}</Text>
+          ))}
+        </TextList>
+        <TextList>
+          Drivers |{" "}
+          {driverAttendees.length === 0 ? (
+            <Text>
+              <em>No drivers yet...</em>
+            </Text>
+          ) : (
+            driverAttendees.length
+          )}
+          {driverAttendees.map((a, index) => (
+            <Text key={index}>{a.firstName}</Text>
+          ))}
+        </TextList>
+      </div>
     </ModalContainerXS>
   );
 };
