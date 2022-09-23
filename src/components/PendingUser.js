@@ -1,7 +1,7 @@
 import { AccUserButton, DelUserButton, Text } from "../styled";
 import { FiUserCheck, FiUserX } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { acceptNewPlayer, deleteNewPlayer } from "../store/player/thunks";
+import { acceptNewPlayer, deletePlayer } from "../store/player/thunks";
 
 export const PendingUser = ({ id: playerId, firstName, lastName, email }) => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export const PendingUser = ({ id: playerId, firstName, lastName, email }) => {
 
   // F11: As an admin, I can DELETE new registrations
   const handleDeletePlayer = () => {
-    dispatch(deleteNewPlayer(playerId));
+    dispatch(deletePlayer(playerId));
   };
 
   return (

@@ -25,7 +25,7 @@ export const MySchedule = () => {
             </>
           ) : (
             [...me.mySchedule]
-              ?.sort(
+              .sort(
                 (eventA, eventB) =>
                   new Date(eventA.date) - new Date(eventB.date)
               )

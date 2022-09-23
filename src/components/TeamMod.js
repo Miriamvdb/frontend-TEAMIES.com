@@ -27,7 +27,6 @@ export const TeamMod = () => {
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          paddingTop: "5rem",
           gap: "5rem",
           overflow: "scroll",
           height: "64vh",

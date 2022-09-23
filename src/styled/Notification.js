@@ -5,6 +5,10 @@ export const Notification = styled.div`
   left: 2.35rem;
   top: -1.4rem;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background-color: #ff6347;
   border-radius: 15rem;
 
@@ -12,6 +16,6 @@ export const Notification = styled.div`
   height: 1rem;
 
   color: white;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   text-align: center;
 `;

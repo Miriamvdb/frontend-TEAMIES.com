@@ -10,7 +10,8 @@ export const Footer = () => {
         opacity: "75%",
       }}
     >
-      Copyright &copy; {new Date().getFullYear()} <b>TEAMIES.com</b>
+      &copy; {new Date().getFullYear()} <b>TEAMIES</b> developed by Miriam van
+      den Bosch
     </Text>
   );
 };
