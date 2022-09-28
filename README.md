@@ -4,8 +4,13 @@ Teamies is a page for sport teams, where a user can specify their participation 
 
 ## Technology I used
 
-Frontend: React / Redux / Axios
-Backend: Sequelize / PostgreSQL / Express
+### Frontend
+
+React / Redux / Axios
+
+### Backend
+
+Sequelize / PostgreSQL / Express
 
 ## User stories
 
