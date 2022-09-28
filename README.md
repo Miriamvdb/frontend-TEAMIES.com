@@ -1,38 +1,42 @@
-# Frontend template
+# TEAMIES
 
-This is a simple react/redux/jwt template to start a project quickly
+Teamies is a page for sport teams, where a user can specify their participation for trainings, matches and custamizable events. The trainer has a good overview now of the players availability. In this case I made an example with my own soccerteam.
 
-## Table of contents:
+## Technology I used
 
-- **[Setup](#setup-how-to-use-this-template)**
-- **[Create React App docs](#cra-docs)**
+Frontend: React / Redux / Axios
+Backend: Sequelize / PostgreSQL / Express
 
-## SETUP How to use this template
+## User stories
 
-1. Create a new project based on this template using the `Use this template` button
+### General user
 
-![HOW_TO_USE](https://user-images.githubusercontent.com/20372832/77003323-70966180-695d-11ea-8abe-b362d57135f3.gif)
+1. As an user, I can sign up to make an account, so I can join the team @ TEAMIES
 
-2. Clone the app
+2. As an user, I can login after the admin accepted me, so I can see the TEAMIES.com page
 
-```
-git clone git@github.com:YOUR_GITHUB_NAME/YOUR_PROJECT_NAME.git
-```
+3. As an user, I like to see a list of the players on the dashboard, to have a quick look who's in our team
 
-3. cd into your project
+   - As an user, I like to see a bigger page (modal) of the team, to have a better overview of all the players
 
-```
-cd YOUR_PROJECT_NAME
-```
+4. As an user, I like to see a list of the events on the dashboard, to have a quick look what's on our planning
 
-4. install dependencies
+   - As an user, I like to see more details of the events, to have an overwiew what's on our planning + more info about the events
 
-```
-npm install
-```
+5. As an user, I can specify my participation for training / match / party, so the trainer has an overview of the amount of players for each event
 
-5. Start development server with npm start
+6. As an user, I can see my own user profile, so I can see what information about me is shared on the page
 
-```
-npm start
-```
+7. As an user, I wanna have my own schedule, so I can only see the events where I'm an attendee
+
+8. As an user, for away matches I can indicate whether I'm driving or not, so we know that we have enough transport
+
+### Admin user
+
+1. As an admin, I can CREATE new events: training / match / party, so all the players can specify their participation
+
+2. As an admin, I can accept/delete new registrations, to prevent that everybody can join who's not belonging the team
+
+3. As an admin, I can delete a training / match / party, when a event is cancelled
+
+4. As an admin, I can delete players, so I can remove players when they stop joining the team
