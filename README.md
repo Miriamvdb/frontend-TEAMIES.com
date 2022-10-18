@@ -1,6 +1,6 @@
 # TEAMIES
 
-Teamies is a page for sport teams, where a user can specify their participation for trainings, matches and custamizable events. The trainer has a good overview now of the players availability. In this case I made an example with my own soccerteam.
+TEAMIES: a page for sport teams, where sporters can specify their participation for trainings, matches and customisable events. The trainer has a good overview now of the players availability. In this case I made an example with my own football team.
 
 ## Technology I used
 
